@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
   var Banner = sequelize.define('Banner', {
     imagem: {
       type: DataTypes.STRING,
-      defaultValue: '/img/banners/sem-imagem.png'
+      defaultValue: '/img/sem-imagem/banner.png'
     }
   })
   return Banner;

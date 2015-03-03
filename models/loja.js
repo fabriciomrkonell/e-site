@@ -17,15 +17,15 @@ module.exports = function(sequelize, DataTypes) {
     },
     imagem1: {
       type: DataTypes.STRING,
-      defaultValue: '/img/lojas/sem-imagem.png'
+      defaultValue: '/img/sem-imagem/loja.png'
     },
     imagem2: {
       type: DataTypes.STRING,
-      defaultValue: '/img/lojas/sem-imagem.png'
+      defaultValue: '/img/sem-imagem/loja.png'
     },
     imagem3: {
       type: DataTypes.STRING,
-      defaultValue: '/img/lojas/sem-imagem.png'
+      defaultValue: '/img/sem-imagem/loja.png'
     },
     imagem4: {
       type: DataTypes.STRING,
@@ -33,7 +33,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     imagem5: {
       type: DataTypes.STRING,
-      defaultValue: '/img/lojas/sem-imagem.png'
+      defaultValue: '/img/sem-imagem/loja.png'
     },
     latitude: {
       type: DataTypes.STRING,

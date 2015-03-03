@@ -21,7 +21,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     imagem: {
       type: DataTypes.STRING,
-      defaultValue: '/img/produtos/sem-imagem.png'
+      defaultValue: '/img/sem-imagem/produto.png'
     },
     favorito: {
       type: DataTypes.INTEGER,

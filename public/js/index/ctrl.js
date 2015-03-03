@@ -2,8 +2,8 @@ angular.module('schroeder', ['ngResource']).controller('schroederCtrl', ['$scope
 
   angular.extend($scope, {
     view: 1,
-    email: "fabricioronchii@gmail.com",
-    password: "admin",
+    email: "",
+    password: "",
     nomeRegister: "",
     emailRegister: "",
     passwordRegister: "",

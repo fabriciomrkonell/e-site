@@ -9,18 +9,26 @@ define(['js/app'], function (app) {
       return dados.dataTerminoAno + '' + dados.dataTerminoMes + '' + dados.dataTerminoDia;
     };
 
+    function getFloatDate(data){
+      data = data.toString();
+      if(data.length == 1){
+        return "0" + data;
+      }
+      return data;
+    };
+
     function clear(){
       var _data = new Date();
       angular.extend($scope, {
         dados: {
           id: '',
           descricao: '',
-          dataInicioDia: '01',
-          dataInicioMes: '01',
-          dataInicioAno: '2015',
-          dataTerminoDia: '01',
-          dataTerminoMes: '01',
-          dataTerminoAno: '2015'
+          dataInicioDia: getFloatDate(_data.getDate()),
+          dataInicioMes: getFloatDate(_data.getMonth() + 1),
+          dataInicioAno: _data.getFullYear(),
+          dataTerminoDia: getFloatDate(_data.getDate()),
+          dataTerminoMes: getFloatDate(_data.getMonth() + 1),
+          dataTerminoAno: _data.getFullYear()
         }
       });
     };

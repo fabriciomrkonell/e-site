@@ -47,6 +47,7 @@ exports.salvar = function(req, res, next) {
       res.json({ success: 0, message: "Já existe um usuário com esse email!" });
     }else{
       if(valid(req.body)){
+        req.body.password = req.body.email;
         db.User.create(req.body).success(function(entity) {
           res.json({ success: 1, message: "Usuário criado com sucesso!" });
         });

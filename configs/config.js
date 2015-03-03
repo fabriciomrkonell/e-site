@@ -15,7 +15,8 @@ function update(entities, posicao, entity, res, __dirname){
       codigo: entity.codigo,
       descricao: entity.descricao,
       valor: entity.valor,
-      DepartamentoId: entity.DepartamentoId
+      DepartamentoId: entity.DepartamentoId,
+      imagem: novo
     };
     db.Produto.create(_produto).success(function(entityProdutoNovo) {
       if(entities.length > (posicao + 1)){

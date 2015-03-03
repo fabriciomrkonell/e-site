@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/img/icon.png">
+    <title>Rancho Bom Supermercados</title>
+    <link href="/lib/bootstrap-css/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/home/style.css" rel="stylesheet">
+    <link href="/lib/autocomplete/css/angucomplete.css" rel="stylesheet">
+  </head>
+  <body ng-controller="homeCtrl">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav" style="display: none" id="my-nav">
+            <li><a href="#/home">Início</a></li>
+            <li class="dropdown" ng-if="temAcesso(['1','2'], grupo)">
+              <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                Cadastro &nbsp;<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a href="#/cadastro-promocao"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;Promoção</a>
+                </li>
+                <li>
+                  <a href="#/cadastro-produto"><i class="glyphicon glyphicon-gift"></i>&nbsp;&nbsp;Produto</a>
+                </li>
+                <li>
+                  <a href="#/cadastro-departamento"><i class="glyphicon glyphicon-hdd"></i>&nbsp;&nbsp;Departamento</a>
+                </li>
+                <li>
+                  <a href="#/cadastro-loja"><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;Loja</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown" ng-if="temAcesso(['1','2'], grupo)">
+              <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                Consulta &nbsp;<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a href="#/consulta-promocao"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;Promoção</a>
+                </li>
+                <li>
+                  <a href="#/consulta-produto"><i class="glyphicon glyphicon-align-justify"></i>&nbsp;&nbsp;Produto</a>
+                </li>
+                <li>
+                  <a href="#/consulta-departamento"><i class="glyphicon glyphicon-hdd"></i>&nbsp;&nbsp;Departamento</a>
+                </li>
+                <li>
+                  <a href="#/consulta-loja"><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;Loja</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown" ng-if="temAcesso(['1','2'], grupo)">
+              <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                Site &nbsp;<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a href="#/banner-home"><i class="glyphicon glyphicon-picture"></i>&nbsp;&nbsp;Banner</a>
+                </li>
+                <li>
+                  <a href="#/produtos-favoritos"><i class="glyphicon glyphicon-star"></i>&nbsp;&nbsp;Favoritos</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown" ng-if="temAcesso(['1','3'], grupo)">
+              <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                RH &nbsp;<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a href="#/candidatos-vagas"><i class="glyphicon glyphicon-file"></i>&nbsp;&nbsp;Candidatos</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Configurações <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a ng-href="#/meus-dados"><i class="glyphicon glyphicon-map-marker"></i>&nbsp;&nbsp;Perfil</a>
+                </li>
+                <li>
+                  <a ng-href="#/meus-dados-password"><i class="glyphicon glyphicon-cog"></i>&nbsp;&nbsp;Senha</a>
+                </li>
+                <li ng-if="temAcesso(['1'], grupo)">
+                  <a ng-href="#/novo-usuario"><i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;Usuários</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)" ng-click="sair()"><i class="glyphicon glyphicon-log-out"></i>&nbsp;&nbsp;Sair</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container ng-cloak">
+      <div ng-view></div>
+    </div>
+    <script data-main="/js/main.js" src="/lib/require/require.js"></script>
+  </body>
+</html>

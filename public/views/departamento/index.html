@@ -1,0 +1,26 @@
+<h3>
+	<i class="glyphicon glyphicon-hdd"></i>
+	&nbsp;&nbsp;Consulta de departamento
+</h3>
+<div>
+	<table class="table table-condensed table-bordered">
+		<thead>
+			<tr>
+				<th style="width: 70px" class="text-center">Código</th>
+				<th style="width: 200px">Descrição</th>
+				<th>Mensagem</th>
+				<th style="width: 80px" class="text-center">Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="departamento in dados">
+				<td style="width: 70px" class="text-center">{{departamento.id}}</td>
+				<td style="width: 200px">{{departamento.descricao}}</td>
+				<td>{{departamento.mensagem}}</td>
+				<td style="width: 80px" class="text-center">
+					<a ng-href="#/update-departamento/{{departamento.id}}" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-pencil"></i></a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

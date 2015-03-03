@@ -1,0 +1,44 @@
+<h3>
+	<i class="glyphicon glyphicon-align-justify"></i>
+	&nbsp;&nbsp;Consulta de produto
+</h3>
+<div class="row">
+	<div class="col-sm-5">
+ 		<div class="form-group">
+	    <label>Código</label>
+	    <input type="text" class="form-control" ng-model="produto" placeholder="Ex: 78965487654">
+	  </div>
+	</div>
+	<div class="col-sm-7">
+		<h4 class="pull-right" style="margin-top: 33px">{{dados.length}} produtos</h4>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-12">
+		<table class="table table-bordered table-condensed">
+			<thead>
+				<tr>
+					<th style="width: 150px" class="text-center" >
+						<a href="javascript:void(0)" ng-click="order = 'codigo'">Código</a>
+					</th>
+					<th>
+						<a href="javascript:void(0)" ng-click="order = 'descricao'">Descrição</a>
+					</th>
+					<th style="width: 100px" class="text-center">Valor</th>
+					<th style="width: 100px" class="text-center">Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="produto in dados | filter:produto:'codigo' | orderBy:order:'false'">
+					<td style="width: 150px" class="text-center">{{produto.codigo}}</td>
+					<td>{{produto.descricao}}</td>
+					<td style="width: 100px" class="text-center">{{produto.valor}}</td>
+					<td style="width: 100px" class="text-center">
+						<a ng-href="#/cadastro-produto/{{produto.id}}" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-pencil"></i></a>
+						<button ng-click="excluir(produto.id, $index)" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i></button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,46 @@
+<h3>
+	<i class="glyphicon glyphicon-star"></i>
+	&nbsp;&nbsp;Favoritos
+</h3>
+<div class="row">
+	<div class="col-sm-5">
+ 		<div class="form-group">
+	    <label>Código</label>
+	    <angucomplete
+          placeholder="Ex: 78965487654"
+          pause="300"
+          selectedobject="produto"
+          searchfields="codigo"
+          titlefield="codigo"
+          minlength="1"
+          url="/api/produtos/autocomplete/naofavorito/"
+          inputclass="form-control"
+          matchclass="highlight" />
+	  </div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-12">
+		<table class="table table-bordered table-condensed">
+			<thead>
+				<tr>
+					<th class="text-center" style="width: 120px">Código</th>
+					<th>Descrição</th>
+					<th class="text-center" style="width: 100px">Valor</th>
+					<th class="text-center" style="width: 90px">Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="favorito in dados">
+					<td class="text-center" style="width: 120px">{{favorito.codigo}}</td>
+					<td>{{favorito.descricao}}</td>
+					<td class="text-center" style="width: 100px">{{favorito.valor}}</td>
+					<td class="text-center" style="width: 90px">
+						<a ng-href="#/cadastro-produto/{{favorito.id}}" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-pencil"></i></a>
+						<button ng-click="toogleFavorito(favorito.id)" type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i></button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

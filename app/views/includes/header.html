@@ -1,0 +1,25 @@
+<header class="main-header" role="banner">
+  <div class="wrapper">
+
+    <div class="dc1">
+      <p class="welcome-message">Olá visitante. Seja bem vindo!</p>
+    </div>
+
+    <nav class="dc2 site-nav">
+      <ul class="site-nav__list">
+        <li class="site-nav__item {% if page == '/' %} site-nav__item_active {% endif %}"><a href="/" class="site-nav__link">Home</a></li>
+        <li class="site-nav__item {% if page == '/history' %} site-nav__item_active {% endif %}"><a href="/historia" class="site-nav__link">História</a></li>
+        <li class="site-nav__item {% if page == '/stores' %} site-nav__item_active {% endif %}"><a href="/lojas" class="site-nav__link">Lojas</a></li>
+        <li class="site-nav__item {% if page == '/sales' %} site-nav__item_active {% endif %}"><a href="/ofertas" class="site-nav__link">Ofertas</a></li>
+        <li class="site-nav__item {% if page == '/curriculo' %} site-nav__item_active {% endif %}"><a href="/curriculo" class="site-nav__link">Currículo</a></li>
+        <li class="site-nav__item {% if page == '/contact' %} site-nav__item_active {% endif %}"><a href="/contato" class="site-nav__link">Contato</a></li>
+      </ul>
+    </nav>
+
+    <div class="dc3">
+      <a href="https://www.facebook.com/ranchobom" target="_blank" class="fb-icon">
+        <img class="fb-icon__img" src="build/img/logo-fb.png" alt="Facebook">
+      </a>
+    </div>
+  </div>
+</header>

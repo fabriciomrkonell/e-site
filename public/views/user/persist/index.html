@@ -1,0 +1,50 @@
+<h3>
+	<i class="glyphicon glyphicon-user"></i>
+	&nbsp;&nbsp;Usuários
+</h3>
+<div class="row">
+	<div class="col-sm-5">
+    <form name="userForm" role="form">
+    		<div class="form-group">
+      	<label>Nome</label>
+      	<input type="text" class="form-control" ng-model="user.nome" placeholder="Ex: João da Silva" required>
+    	</div>
+    	<div class="form-group">
+      	<label>Email</label>
+      	<input type="text" class="form-control" ng-model="user.email" placeholder="Ex: joao@joao.com" maxlength="39" required>
+    	</div>
+        <div class="form-group">
+        <label>Tipo</label>
+        <br>
+        <input type="radio" ng-model="user.type" value="1">&nbsp;Administrador<br/>
+        <input type="radio" ng-model="user.type" value="2">&nbsp;Vendas e compras<br/>
+        <input type="radio" ng-model="user.type" value="3">&nbsp;Recursos humanos<br/>
+      </div>
+      <div class="form-group">
+        <button type="button" class="btn btn-success" ng-click="salvar(user)">Salvar</button>
+      </div>
+    </div>
+  </form>
+	<div class="col-sm-7">
+    <table class="table table-bordered table-condensed">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th class="text-center" style="width: 200px">Email</th>
+          <th class="text-center" style="width: 160px">Tipo</th>
+          <th class="text-center" style="width: 80px">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="user in dados">
+          <td>{{user.nome}}</td>
+          <td class="text-center" style="width: 200px">{{user.email}}</td>
+          <td class="text-center" style="width: 160px">{{getUserType(user.type)}}</td>
+          <td class="text-center" style="width: 80px">
+            <button ng-click="excluir(user.id)" ng-if="user.type != 1"type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+	</div>
+</div>

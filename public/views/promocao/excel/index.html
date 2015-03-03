@@ -1,0 +1,58 @@
+<h3>
+	<i class="glyphicon glyphicon-file"></i>
+	&nbsp;&nbsp;Produtos via Excel
+</h3>
+<div class="ng-cloak">
+	<div class="row">
+		<div class="col-sm-5">
+	 		<div class="form-group">
+	    	<label>Descrição da promoção</label>
+	    	<input type="text" class="form-control" ng-model="dados.descricao" ng-readonly="true">
+	  	</div>
+		</div>
+		<div class="col-sm-3">
+	 		<div class="form-group">
+	    	<label>Data de início</label>
+	    	<input type="text" class="form-control" ng-model="dados.dataInicio" ng-readonly="true">
+	  	</div>
+		</div>
+		<div class="col-sm-3">
+	 		<div class="form-group">
+	    	<label>Data de término</label>
+	    	<input type="text" class="form-control" ng-model="dados.dataTermino" ng-readonly="true">
+	  	</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+	 		<hr/ ng-show="upload">
+		</div>
+	</div>
+	<div class="row" ng-show="upload">
+		<div class="col-sm-12">
+	 		<div class="form-group">
+	    	<label>Arquivo Excel</label>
+	    	<form class="form-inline" id="myForm" name="myForm" method="post" enctype="multipart/form-data">
+      	 	<div class="form-group">
+						<input class="form-control" type="file" name="excel" accept="*/*">
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-success" style="margin-left: 10px" ng-click='submit()'>Enviar</button>
+					</div>
+				</form>
+	  	</div>
+		</div>
+	</div>
+	<div class="row" ng-show="!upload">
+		<div class="modal-body text-center">
+     	<img src="/img/loader2.gif" style="margin-top: 20px; width: 140px;">
+    </div>
+	</div>
+	<div class="row" ng-show="erros.length > 0">
+		<div class="col-sm-6">
+			<div class="alert alert-danger" style="text-align: left" role="alert">
+				<p ng-repeat="erro in erros">Erro ao adicionar: {{erro}}</p>
+			</div>
+		</div>
+	</div>
+</div>

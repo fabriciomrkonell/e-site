@@ -1,0 +1,69 @@
+<h3>
+	<i class="glyphicon glyphicon-gift"></i>
+	&nbsp;&nbsp;Produto
+</h3>
+<div class="row">
+	<div class="col-sm-5">
+ 		<div class="form-group">
+	    <label>Código</label>
+	    <angucomplete
+          placeholder="Ex: 78965487654"
+          pause="300"
+          selectedobject="produto"
+          searchfields="codigo"
+          titlefield="codigo"
+          minlength="1"
+          url="/api/produtos/autocomplete/"
+          inputclass="form-control"
+          matchclass="highlight" />
+	  </div>
+	</div>
+</div>
+<div class="row" ng-show="existeProdutoSelecionado(produto);">
+	<div class="col-sm-12">
+	 	<hr/>
+	</div>
+</div>
+<div class="row" ng-show="existeProdutoSelecionado(produto);">
+	<div class="col-sm-6">
+ 		<div class="form-group">
+	    <label>Código</label>
+	    <input type="text" class="form-control" ng-model="produto.originalObject.codigo" ng-disabled="true">
+	  </div>
+	  <div class="form-group">
+	    <label>Descrição</label>
+	    <input type="text" class="form-control" ng-model="produto.originalObject.descricao">
+	  </div>
+	  <div class="form-group">
+	    <label>Valor</label>
+	    <input type="text" class="form-control" ng-model="produto.originalObject.valor">
+	  </div>
+	  <div class="form-group">
+	    <label>Departamento</label>
+	    <input type="text" class="form-control" ng-model="produto.originalObject.Departamento.descricao" ng-disabled="true">
+	  </div>
+	  <div class="form-group">
+	    <button type="button" class="btn btn-success" ng-click="salvar(produto.originalObject)">Salvar</button>
+	  </div>
+	</div>
+	<div class="col-sm-1">
+	</div>
+	<div class="col-sm-4" ng-if="!update">
+ 		<div ng-click="toogleShow(0)" class="thumbnail">
+      <img style="width: 300px" ng-src="{{produto.originalObject.imagem}}">
+   	</div>
+   	<div class="text-center">
+   		<label>Tamanho ideal: 150x150 pixels</label>
+   	</div>
+	</div>
+	<div class="col-sm-5" ng-if="update">
+		<form class="form-inline" id="myForm" name="myForm" method="post" enctype="multipart/form-data">
+	 		<div class="form-group">
+				<input type="file" class="form-control" name="image" accept="image/*">
+				<button style="margin-left: 10px" type="button" ng-click="submit(produto.originalObject.id)" class="btn btn-success">Salvar</button></div>
+		</form>
+		<br>
+		<div class="form-group text-center">
+			<button type="button" ng-click="toogleShow(1)" class="btn btn-primary">Cancelar</button></div>
+	</div>
+</div>

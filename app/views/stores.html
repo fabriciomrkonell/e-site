@@ -1,0 +1,46 @@
+{% block content %}
+<div class="home-content">
+  <header class="home-content__header">
+    <h1 class="big-title big-title__stores">Lojas</h1>
+  </header>
+
+  <section class="stores-container">
+
+    {% for loja in lojas %}
+    <div class="store-box">
+      <h2 class="store-box__title">{{loja.nome}}</h2>
+      <div class="store-box__a store-box__col">
+        <img class="store-box__img" src="{{loja.imagem1}}">
+      </div>
+      <div class="store-box__b store-box__col store-info">
+        <ul class="store-info__list">
+          <li class="store-info__item">
+            <span><img class="store-info__icon" src="build/img/phone.png"></span>{{loja.telefone}}
+          </li>
+          <li class="store-info__item">
+            <span>
+              <img class="store-info__icon" src="build/img/email.png">
+            </span>
+            <a ng-href="mailto:{{loja.email}}">{{loja.email}}</a>
+          </li>
+          <li class="store-info__item">
+            <span>
+              <img class="store-info__icon" src="build/img/user.png">
+            </span>
+            Gerente: {{loja.gerente}}
+            </li>
+          <li class="store-info__item">
+            <span>
+              <img class="store-info__icon" src="build/img/clock.png">
+            </span>
+            {{loja.atendimento}}
+          </li>
+        </ul>
+      </div>
+    </div>
+    {% endfor %}
+
+  </section>
+
+</div>
+{% endblock %}

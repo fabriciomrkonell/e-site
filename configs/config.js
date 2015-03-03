@@ -2,7 +2,7 @@ var db = require('../models'),
     fs = require('fs'),
     util = require('util');
 
-exports.config = function(req, res, next, __dirname) {
+/*exports.config = function(req, res, next, __dirname) {
 	db.Produto2.findAll().success(function(entities){
 		update(entities, 0, entities[0], res, __dirname);
 	});
@@ -26,4 +26,4 @@ function update(entities, posicao, entity, res, __dirname){
 			}
     });
   });
-};
+};*/

@@ -150,9 +150,9 @@ app.delete('/api/user/:id', isAuthenticatedPage, user.excluir);
 app.delete('/api/promocao/produto/:id', isAuthenticatedPage, promocao.excluirProduto);
 
 // Configurações
-app.get('/init', function(req, res, next){
+/*app.get('/init', function(req, res, next){
   configs.config(req, res, next, __dirname);
-});
+});*/
 
 // Rotas
 app.get('/admin', function(req, res, next){

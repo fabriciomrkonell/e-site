@@ -1,7 +1,7 @@
 'use strict';
 
 var db = require('../models'),
-    parseExcel = require('excel'),
+    excelParser = require('node-xlsx'),
     produto = require('../routes/produto'),
     formidable = require('formidable');
 
@@ -12,10 +12,10 @@ exports.persist = function(req, res, next){
     if(files.excel.size == 0){
       res.json({ success: 0, message: "Excel inválido!" });
     };
-    parseExcel(files.excel.path, function(err, data) {
-      console.log("-------------------");
-      console.log(err);
-      console.log("-------------------");
+      var data = excelParser.parse(files.excel.path);
+      data = data[0].data;
+      console.log(data)
+    //parseExcel(files.excel.path, function(err, data) {
       if(data.length == 0){
         res.json({ success: 0, message: "Excel sem produtos!" });
       }
@@ -36,6 +36,6 @@ exports.persist = function(req, res, next){
       produto.persist(dados[0][0], dados[0], dados[dados.length - 1][0], 0, dados.length, req.param('id'), res, dados);
       dados = null;
       dados = [];
-    });
+    //});
   });
 };

@@ -21,9 +21,9 @@ var express         = require('express')
   , departamento    = require('./routes/departamento')
   , loja            = require('./routes/loja')
   , banner          = require('./routes/banner')
-  , site            = require('./routes/site')
   , curriculo       = require('./routes/curriculo')
-  , index           = require('./routes/index')
+  , index           = require('./configs/index')
+  , site            = require('./configs/site')
   , configs         = require('./configs/config')
   , excel           = require('./configs/excel');
 

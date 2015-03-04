@@ -165,7 +165,7 @@ app.get('/admin/home', isAuthenticated, function(req, res, next){
 
 app.get('/logout', function(req, res, next){
   req.logout();
-  res.redirect('/');
+  res.redirect('/admin');
 });
 
 app.get('/views/:page', isAuthenticatedPage, function(req, res, next){

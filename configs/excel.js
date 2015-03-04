@@ -9,14 +9,13 @@ exports.persist = function(req, res, next){
   var form = new formidable.IncomingForm(),
       dados = [], flag;
   form.parse(req, function(err, fields, files) {
-    console.log(files);
-    console.log("--------------------");
-    console.log(files.excel);
     if(files.excel.size == 0){
       res.json({ success: 0, message: "Excel inválido!" });
     };
     parseExcel(files.excel.path, function(err, data) {
-      console.log(data);
+      console.log("-------------------");
+      console.log(err);
+      console.log("-------------------");
       if(data.length == 0){
         res.json({ success: 0, message: "Excel sem produtos!" });
       }

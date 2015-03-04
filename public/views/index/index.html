@@ -18,55 +18,21 @@
      </div>
     </nav>
     <div ng-app="schroeder" ng-controller="schroederCtrl" class="container ng-cloak">
-      <div class="row ng-cloak text-center" style="margin-top: 5%" ng-show="view == 1">
+      <div class="row ng-cloak text-center" style="margin-top: 5%">
         <div class="col-sm-12">
-          <img style="width: 250px" src="/img/icon-center.png">
+          <img style="width: 250px" src="/img/logo-footer.png">
         </div>
       </div>
       <br>
-      <form class="form-signin" role="form" ng-show="view == 1" name="loginForm">
+      <form class="form-signin" role="form">
       <input type="email" class="form-control" placeholder="Email" name="email" ng-model="email">
       <br>
       <input type="password" class="form-control" placeholder="Senha" ng-model="password">
       <br>
       <div class="row">
         <div class="col-sm-12 text-center">
-          <button class="btn btn-success" type="button" style="margin: 5px" ng-click="logar()" ng-disabled="btnLogin">
-            <i class="glyphicon glyphicon-ok"></i>&nbsp;&nbsp;Entrar
-          </button>
-          <button ng-show="false" class="btn btn-primary" type="button" style="margin: 5px" ng-click="irRegistrar()">
-            <i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;Registrar
-          </button>
+          <button class="btn btn-success btn-block btn-lg" type="button" style="margin: 5px" ng-click="logar()" ng-disabled="btnLogin">Entrar</button>
         </div>
-      </div>
-      <div class="row">
-        <div class="alert alert-danger alert-dismissible" ng-show="showMessagem">
-          <strong>Ops!</strong>  {{error}}
-        </div>
-      </div>
-    </form>
-    <form class="form-signin" name="userForm" role="form" ng-show="view == 2">
-      <h2 class="label-login">Novo usuário</h2>
-      <div class="form-group">
-        <label>Nome</label>
-        <input type="text" class="form-control" placeholder="Digite seu nome" ng-model="nomeRegister" required>
-      </div>
-       <div class="form-group" ng-class="{'has-error': userForm.emailRegister.$invalid && !userForm.emailRegister.$pristine }">
-        <label>Email</label>
-        <input type="email" name="emailRegister" class="form-control" placeholder="Digite seu email" ng-model="emailRegister">
-        <p ng-show="userForm.emailRegister.$invalid && !userForm.emailRegister.$pristine" class="help-block">Email inválido!</p>
-      </div>
-      <div class="form-group">
-        <label>Senha</label>
-        <input type="password" class="form-control" placeholder="Digite sua senha" ng-model="passwordRegister" required>
-      </div>
-      <div class="col-sm-12 text-center">
-        <button class="btn btn-success" type="button" style="margin: 5px" ng-click="registrar()" ng-disabled="btnRegister || userForm.$invalid">
-          <i class="glyphicon glyphicon-ok"></i>&nbsp;&nbsp;Salvar
-        </button>
-        <button class="btn btn-primary" type="button" style="margin: 5px" ng-click="voltar()">
-          <i class="glyphicon glyphicon-arrow-left"></i>&nbsp;&nbsp;Voltar
-        </button>
       </div>
       <div class="row">
         <div class="alert alert-danger alert-dismissible" ng-show="showMessagem">

@@ -195,6 +195,7 @@ exports.createPDF = function(req, res, next) {
       pdf.create(getHTML(entity), options).toFile(function(err, _res) {
         if (err) return res.json({ success: 0, data: err });
         res.statusCode = 200;
+        res.setEncoding('utf8');
         res.download(_res.filename);
         res.json({ success: 1, message: "Download efetuado!" });
       });

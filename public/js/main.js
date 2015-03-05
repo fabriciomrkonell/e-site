@@ -8,18 +8,15 @@ require.config({
     'angular-route': 'lib/angular-route/angular-route.min',
     'angularAMD': 'lib/angular-amd/angularAMD.min',
     'angular-sanitize': 'lib/angular-sanitize/angular-sanitize',
-    'jsPDFDebug': 'lib/jspdf/jspdf.debug',
-    'jsPDF': 'lib/jspdf/jspdf.plugin.cell',
     'autocomplete': 'lib/autocomplete/js/angucomplete'
   },
   shim: {
     'angularAMD': ['angular'],
     'angular-route': ['angular'],
     'angular-sanitize': ['angular'],
-    'jsPDF': ['jquery', 'jsPDFDebug'],
     'bootstrap': ['jquery'],
     'jqueryForm': ['jquery'],
     'autocomplete': ['angular'],
   },
-  deps: ['js/app', 'angular-sanitize', 'socket', 'jsPDF', 'bootstrap', 'jqueryForm']
+  deps: ['js/app', 'angular-sanitize', 'bootstrap', 'jqueryForm']
 });

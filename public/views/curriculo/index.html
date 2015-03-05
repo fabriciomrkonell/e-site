@@ -23,7 +23,7 @@
 					<td class="text-center" style="width: 150px">{{candidato.telefone}}</td>
 					<td class="text-center" style="width: 190px">{{getSalario(candidato.pretensao)}}</td>
 					<td class="text-center" style="width: 80px">
-						<button ng-click="gerarPDF(candidato)" type="button" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-download-alt"></i></button>
+						<button ng-click="gerarPDF(candidato.id)" type="button" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-download-alt"></i></button>
 					</td>
 				</tr>
 			</tbody>

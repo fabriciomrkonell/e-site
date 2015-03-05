@@ -105,9 +105,9 @@ define(['angularAMD', 'angular-route', 'angular-sanitize', 'autocomplete'], func
       controllerUrl: 'js/produto/favorito/ctrl',
       permission: [1,2]
     })).when("/candidatos-vagas", angularAMD.route({
-      templateUrl: '/views/candidato!' + Math.random(),
-      controller: 'Candidato',
-      controllerUrl: 'js/candidato/ctrl',
+      templateUrl: '/views/curriculo!' + Math.random(),
+      controller: 'Curriculo',
+      controllerUrl: 'js/curriculo/ctrl',
       permission: [1,3]
     })).otherwise({ redirectTo: "/home" });
 

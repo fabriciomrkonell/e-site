@@ -29,7 +29,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     imagem4: {
       type: DataTypes.STRING,
-      defaultValue: '/img/lojas/sem-imagem.png'
+      defaultValue: '/img/sem-imagem/loja.png'
     },
     imagem5: {
       type: DataTypes.STRING,

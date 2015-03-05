@@ -105,6 +105,7 @@ app.get('/api/promocao/:id', isAuthenticatedPage, promocao.getById)
 app.get('/api/promocao/all/:id', isAuthenticatedPage, promocao.getAllById)
 app.get('/api/loja', isAuthenticatedPage, loja.getAll)
 app.get('/api/loja/:id', isAuthenticatedPage, loja.getById)
+app.get('/api/loja/imagem/:id', isAuthenticatedPage, loja.imagens)
 app.get('/api/departamento', isAuthenticatedPage, departamento.getAll)
 app.get('/api/produto', isAuthenticatedPage, produto.getAll)
 app.get('/api/produto/:id', isAuthenticatedPage, produto.getById)
@@ -135,8 +136,20 @@ app.post('/api/imagem/banner/:id', isAuthenticatedPage, function(req, res, next)
   banner.setImagem(req, res, next, __dirname);
 });
 
-app.post('/api/imagem/loja/:id', isAuthenticatedPage, function(req, res, next){
-  loja.setImagem(req, res, next, __dirname);
+app.post('/api/imagem/loja/imagem1/:id', isAuthenticatedPage, function(req, res, next){
+  loja.setImagem(req, res, next, __dirname, 'imagem1');
+});
+
+app.post('/api/imagem/loja/imagem2/:id', isAuthenticatedPage, function(req, res, next){
+  loja.setImagem(req, res, next, __dirname, 'imagem2');
+});
+
+app.post('/api/imagem/loja/imagem3/:id', isAuthenticatedPage, function(req, res, next){
+  loja.setImagem(req, res, next, __dirname, 'imagem3');
+});
+
+app.post('/api/imagem/loja/imagem4/:id', isAuthenticatedPage, function(req, res, next){
+  loja.setImagem(req, res, next, __dirname, 'imagem4');
 });
 
 app.post('/api/imagem/produto/:id', isAuthenticatedPage, function(req, res, next){

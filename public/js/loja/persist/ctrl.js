@@ -10,8 +10,7 @@ define(['js/app'], function (app) {
           email: '',
           telefone: '',
           gerente: '',
-          atendimento: '',
-          imagem: ''
+          atendimento: ''
         }
       });
     };
@@ -34,19 +33,6 @@ define(['js/app'], function (app) {
       });
     }else{
       clear();
-    };
-
-    $scope.submit = function(){
-      document.myForm.action = '/api/imagem/loja/' + $routeParams.id;
-      $('#myForm').ajaxSubmit({
-        dataType: 'text',
-        error: function(xhr) {
-          window.location.reload();
-        },
-        success: function(response) {
-          window.location.reload();
-        }
-      });
     };
 
   }]);

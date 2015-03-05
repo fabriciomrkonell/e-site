@@ -54,7 +54,7 @@ exports.getById = function(req, res, next) {
     where: {
       id: req.param('id')
     },
-    attributes: ['id', 'nome', 'telefone', 'email', 'atendimento', 'gerente', 'imagem1']
+    attributes: ['id', 'nome', 'telefone', 'email', 'atendimento', 'gerente']
   }).success(function(entity) {
     if (entity) {
       res.json({ success: 1, data: entity });
@@ -66,22 +66,24 @@ exports.getById = function(req, res, next) {
 
 exports.getAll = function(req, res, next) {
   db.Loja.findAll({
-    attributes: ['id', 'nome', 'telefone', 'email', 'atendimento', 'gerente', 'imagem1']
+    attributes: ['id', 'nome', 'telefone', 'email', 'atendimento', 'gerente']
   }).success(function(entities) {
     res.json({ success: 1, data: entities });
   })
 };
 
-exports.setImagem = function(req, res, next, __dirname){
+exports.setImagem = function(req, res, next, __dirname, propriedade){
   var form = new formidable.IncomingForm();
   form.parse(req, function(err, fields, files) {
     fs.readFile(util.inspect(files.image.path).replace("'", "").replace("'", ""), function (err, data) {
       var nameArquivo = util.inspect(files.image.name).replace("'", "").replace("'", "");
       var novo = "/img/lojas/" + req.param('id') + ".png";
+      var _p = {};
+      _p[propriedade] = novo;
       fs.writeFile(__dirname + "/public" + novo, data, function (err) {
         db.Loja.find({ where: { id: req.param('id') } }).success(function(entity) {
           if (entity) {
-            entity.updateAttributes({ imagem1: novo }).success(function(entitySalvo) {
+            entity.updateAttributes(_p).success(function(entitySalvo) {
               res.json({ success: 1, message: entitySalvo });
             })
           } else {
@@ -91,4 +93,20 @@ exports.setImagem = function(req, res, next, __dirname){
       });
     });
   });
+};
+
+
+exports.imagens = function(req, res, next) {
+  db.Loja.find({
+    attributes: ['id', 'nome', 'imagem1', 'imagem2', 'imagem3', 'imagem4'],
+    where: {
+      id: req.param('id')
+    }
+  }).success(function(entity) {
+    if(entity){
+      res.json({ success: 1, data: entity });
+    }else{
+      res.json({ success: 2, message: 'Loja não encontada!' });
+    }
+  })
 };

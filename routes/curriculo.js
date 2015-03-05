@@ -193,11 +193,10 @@ exports.createPDF = function(req, res, next) {
             filename: './tmp/' + entity.nome + '.pdf'
           };
       pdf.create(getHTML(entity), options).toFile(function(err, _res) {
-        if (err) return res.json({ success: 0, data: err });
-        res.statusCode = 200;
-        res.setEncoding('utf8');
-        res.download(_res.filename);
-        res.json({ success: 1, message: "Download efetuado!" });
+        if (err){
+          return res.json({ success: 0, data: err });
+        }
+        res.sendfile(_res.filename);
       });
     }else{
       res.json({ success: 0, message: "Currículo não encontrado" });

@@ -17,7 +17,7 @@
     "ejs": ">= 0.0.0",
     "ejs-locals": ">= 0.0.0",
     "errorhandler": "~1.0.0",
-    "excel": "^0.1.1",
+    "node-xlsx": ">= 0.5.1",
     "express": "3.x.x",
     "formidable": "^1.0.15",
     "jquery": "^1.11.2",

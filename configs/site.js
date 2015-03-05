@@ -35,7 +35,8 @@ exports.index = function(req, res, next) {
       attributes: [ 'imagem' ]
     }).success(function(entityBanners) {
       db.Departamento.findAll({
-        attributes: [ 'descricao', 'id' ]
+        attributes: [ 'descricao', 'id' ],
+        order: 'descricao ASC'
       }).success(function(entityDepartamentos) {
         res.render('layouts/default', {
           title: 'Home',
@@ -56,7 +57,8 @@ exports.history = function(req, res, next) {
     attributes: [ 'imagem' ]
   }).success(function(entityBanners) {
     db.Departamento.findAll({
-      attributes: [ 'descricao', 'id' ]
+      attributes: [ 'descricao', 'id' ],
+      order: 'descricao ASC'
     }).success(function(entityDepartamentos) {
       res.render('layouts/default', {
         title: 'Home',
@@ -76,7 +78,8 @@ exports.stores = function(req, res, next) {
       attributes: [ 'imagem' ]
     }).success(function(entityBanners) {
       db.Departamento.findAll({
-        attributes: [ 'descricao', 'id' ]
+        attributes: [ 'descricao', 'id' ],
+        order: 'descricao ASC'
       }).success(function(entityDepartamentos) {
         res.render('layouts/default', {
           title: 'Home',
@@ -144,7 +147,8 @@ exports.sales = function(req, res, next) {
   }
 
   db.Departamento.findAll({
-    attributes: [ 'descricao', 'id' ]
+    attributes: [ 'descricao', 'id' ],
+    order: 'descricao ASC'
   }).success(function(entityDepartamentos) {
     db.Promocao.findAll({
       order: 'dataInicio DESC',
@@ -184,7 +188,8 @@ exports.sales = function(req, res, next) {
 
 exports.curriculo = function(req, res, next) {
   db.Departamento.findAll({
-    attributes: [ 'descricao', 'id' ]
+    attributes: [ 'descricao', 'id' ],
+    order: 'descricao ASC'
   }).success(function(entityDepartamentos) {
     res.render('layouts/default', {
       title: 'Home',
@@ -196,7 +201,8 @@ exports.curriculo = function(req, res, next) {
 
 exports.contact = function(req, res, next) {
   db.Departamento.findAll({
-    attributes: [ 'descricao', 'id' ]
+    attributes: [ 'descricao', 'id' ],
+    order: 'descricao ASC'
   }).success(function(entityDepartamentos) {
     res.render('layouts/default', {
       title: 'Home',
@@ -208,13 +214,13 @@ exports.contact = function(req, res, next) {
 
 exports.enviar = function(req, res, next) {
   if(!req.body.name){
-    res.json({ success: 0, message: "Favor preencher todos os campos!" });
+    return res.json({ success: 0, message: "Favor preencher todos os campos!" });
   }
   if(!req.body.subject){
-    res.json({ success: 0, message: "Favor preencher todos os campos!" });
+    return res.json({ success: 0, message: "Favor preencher todos os campos!" });
   }
   if(!req.body.message){
-    res.json({ success: 0, message: "Favor preencher todos os campos!" });
+    return res.json({ success: 0, message: "Favor preencher todos os campos!" });
   }
   var transporter = nodemailer.createTransport("SMTP", {
     host: 'smtp.redetop.com.br',

@@ -57,7 +57,7 @@ exports.enviar = function(req, res, next) {
 exports.getAll = function(req, res, next) {
   db.Curriculo.findAll({
     attributes: [ 'nome', 'email', 'nascimento', 'sexo', 'cidade', 'estado', 'telefone', 'celular', 'salarioAtual', 'trabalha', 'conheceuSite', 'cargo', 'hierarquico', 'area', 'pretensao', 'outrasEmpresas', 'outras' ],
-    order: 'noma ASC'
+    order: 'nome ASC'
   }).success(function(entities) {
     res.json({ success: 1, data: entities });
   });

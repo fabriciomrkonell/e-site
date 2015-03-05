@@ -100,7 +100,7 @@ if(window.location.pathname == "/contato"){
   clearContato();
 }
 
-function enviarMensagem(){
+function enviarCurriculo(){
   var sexo = document.getElementById('sexoM').value,
       trabalha = document.getElementById('trabalhaS').value;
 
@@ -143,7 +143,7 @@ function enviarMensagem(){
   });
 };
 
-function enviarCurriculo(){
+function enviarMensagem(){
   var obj = {
     name: document.getElementById('name').value,
     email: document.getElementById('email').value,

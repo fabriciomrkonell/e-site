@@ -84,7 +84,7 @@ define(['angularAMD', 'angular-route', 'angular-sanitize', 'autocomplete'], func
       controller: 'Loja',
       controllerUrl: 'js/loja/ctrl',
       permission: [1,2]
-    })).when("/loja-imagem", angularAMD.route({
+    })).when("/loja-imagem/:id", angularAMD.route({
       templateUrl: '/views/persist/banner!' + Math.random(),
       controller: 'persistBanner',
       controllerUrl: 'js/banner/persist/ctrl',

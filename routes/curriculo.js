@@ -194,10 +194,10 @@ exports.createPDF = function(req, res, next) {
           };
       pdf.create(getHTML(entity), options).toFile(function(err, _res) {
         if (err) return console.log(err);
-        res.download(_res.filename);
+        return res.download(_res.filename);
       });
     }else{
-      res.json({ success: 0, message: "Currículo não encontrado" });
+      return res.json({ success: 0, message: "Currículo não encontrado" });
     }
   });
 };

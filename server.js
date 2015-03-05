@@ -117,7 +117,7 @@ app.get('/api/produtos/favoritos', isAuthenticatedPage, produto.favoritos)
 app.get('/api/user', isAuthenticatedPage, user.info)
 app.get('/api/user/all', isAuthenticatedPage, user.getAll)
 app.get('/api/curriculo', isAuthenticatedPage, curriculo.getAll)
-app.get('/api/curriculo/pdf/:id', curriculo.createPDF)
+app.get('/api/curriculo/pdf/:id', isAuthenticatedPage, curriculo.createPDF)
 
 // API Post
 app.post('/api/promocao', isAuthenticatedPage, promocao.persist);

@@ -74,9 +74,9 @@ function persist(codigo, data, ultimo, atual, total, _promocao, _res, _produtoTo
 };
 
 exports.getAll = function(req, res, next) {
-  db.Produto.findAll({
+  db.Produto.findAll(/*{
     attributes: ['id', 'codigo', 'descricao', 'valor']
-  }).success(function(entities) {
+  }*/).success(function(entities) {
     res.json({ success: 1, data: entities });
   })
 };

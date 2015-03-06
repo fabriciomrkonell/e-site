@@ -97,8 +97,6 @@ app.get('/ofertas', site.sales);
 app.get('/curriculo', site.curriculo);
 app.get('/contato', site.contact);
 
-app.get('/react', produto.getAll);
-
 app.post('/api/curriculo', curriculo.enviar)
 app.post('/api/contact', site.enviar)
 app.post('/api/star/produto/:id', produto.star)

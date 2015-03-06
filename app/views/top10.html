@@ -25,23 +25,5 @@
     </div>
     {% endfor %}
   </section>
-  <section class="product-paginator">
-    <ul class="product-paginator__list">
-      {% if pagina != 1 %}
-      <li class="product-paginator__item">
-        <a href="javascript:void(0)" onclick="anterior({{pagina}}, {{departamento}}, '{{expressao}}')" class="product-paginator__link">
-          <span aria-hidden="true">Anterior</span>
-        </a>
-      </li>
-      {% endif %}
-      {% if produtos.length > 20 %}
-      <li class="product-paginator__item">
-        <a href="javascript:void(0)" onclick="proxima({{pagina}}, {{departamento}}, '{{expressao}}')" class="product-paginator__link">{{data2}}
-          <span aria-hidden="true">Próxima</span>
-        </a>
-      </li>
-      {% endif %}
-    </ul>
-  </section>
 </div>
 {% endblock %}

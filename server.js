@@ -90,6 +90,7 @@ passport.use(new LocalStrategy(
 ));
 
 app.get('/', site.index);
+app.get('/top10', site.top10);
 app.get('/historia', site.history);
 app.get('/lojas', site.stores);
 app.get('/ofertas', site.sales);
@@ -98,6 +99,7 @@ app.get('/contato', site.contact);
 
 app.post('/api/curriculo', curriculo.enviar)
 app.post('/api/contact', site.enviar)
+app.post('/api/star/produto/:id', produto.star)
 
 // API Get
 app.get('/api/promocao', isAuthenticatedPage, promocao.getAll)

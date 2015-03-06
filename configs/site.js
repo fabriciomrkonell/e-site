@@ -29,7 +29,7 @@ exports.index = function(req, res, next) {
     where: {
       favorito: 1
     },
-    attributes: [ 'codigo', 'descricao', 'valor', 'imagem' ]
+    attributes: [ 'id', 'descricao', 'imagem', 'valor', 'DepartamentoId', 'stars' ]
   }).success(function(entityProdutos) {
     db.Banner.findAll({
       attributes: [ 'imagem' ]
@@ -110,7 +110,7 @@ exports.sales = function(req, res, next) {
     if(exp != '' || exp != null){
       condicao = {
         model: db.Produto,
-        attributes: [ 'descricao', 'imagem', 'valor', 'DepartamentoId' ],
+        attributes: [ 'id', 'descricao', 'imagem', 'valor', 'DepartamentoId', 'stars' ],
         where: {
           DepartamentoId: dep,
           descricao: {
@@ -121,7 +121,7 @@ exports.sales = function(req, res, next) {
     }else{
       condicao = {
         model: db.Produto,
-        attributes: [ 'descricao', 'imagem', 'valor', 'DepartamentoId' ],
+        attributes: [ 'id', 'descricao', 'imagem', 'valor', 'DepartamentoId','stars' ],
         where: {
           DepartamentoId: dep
         }
@@ -131,7 +131,7 @@ exports.sales = function(req, res, next) {
     if(exp != '' || exp != null){
       condicao = {
         model: db.Produto,
-        attributes: [ 'descricao', 'imagem', 'valor', 'DepartamentoId' ],
+        attributes: [ 'id', 'descricao', 'imagem', 'valor', 'DepartamentoId', 'stars' ],
         where: {
           descricao: {
             like: "%" + exp + "%"
@@ -141,7 +141,7 @@ exports.sales = function(req, res, next) {
     }else{
       condicao = {
         model: db.Produto,
-        attributes: [ 'descricao', 'imagem', 'valor', 'DepartamentoId' ]
+        attributes: [ 'id', 'descricao', 'imagem', 'valor', 'DepartamentoId', 'stars' ]
       }
     }
   }
@@ -180,6 +180,49 @@ exports.sales = function(req, res, next) {
           produtos: entityAssociation,
           departamento: dep,
           expressao: exp
+        });
+      });
+    });
+  });
+};
+
+exports.top10 = function(req, res, next) {
+  var data = getFormatData(new Date());
+      condicao = {
+        model: db.Produto,
+        attributes: [ 'id', 'descricao', 'imagem', 'valor', 'DepartamentoId', 'stars' ]
+      };
+
+  db.Departamento.findAll({
+    attributes: [ 'descricao', 'id' ],
+    order: 'descricao ASC'
+  }).success(function(entityDepartamentos) {
+    db.Promocao.findAll({
+      order: 'dataInicio DESC',
+      limit: 10,
+      where: ["? >= dataInicio and ? <= dataTermino", data, data],
+      attributes: ['id']
+    }).success(function(entityPromocao) {
+      var promocoes = [];
+      for(var i = 0; i < entityPromocao.length; i++){
+        promocoes.push(entityPromocao[i].id);
+      };
+      db.Association.findAll({
+        limit: 10,
+        where: {
+          PromocaoId: promocoes
+        },
+        order: 'Produto.stars DESC',
+        include: [ condicao ]
+      }).success(function(entityAssociation) {
+        if(entityAssociation.length < 1){
+          pag = 1;
+        }
+        res.render('layouts/default', {
+          title: 'Home',
+          page: '/top10',
+          departamentos: entityDepartamentos,
+          produtos: entityAssociation
         });
       });
     });

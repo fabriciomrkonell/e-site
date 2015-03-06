@@ -209,3 +209,19 @@ exports.persistFavorito = function(req, res, next) {
     }
   });
 };
+
+exports.star = function(req, res, next) {
+  db.Produto.find({
+    where: {
+      id: req.param('id')
+    }
+  }).success(function(entity) {
+    if(entity){
+      entity.updateAttributes({ stars: (entity.stars + 1) }).success(function() {
+        res.json({ success: 1 });
+      })
+    }else{
+      res.json({ success: 0 });
+    }
+  });
+};

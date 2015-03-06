@@ -190,12 +190,9 @@ exports.createPDF = function(req, res, next) {
               "left": "1in"
             },
             entityformat: 'Letter',
-            filename: './tmp/' + entity.nome + '.pdf'
+            filename: '/tmp/' + entity.nome + '.pdf'
           };
       pdf.create(getHTML(entity), options).toFile(function(err, _res) {
-        if (err){
-          return res.json({ success: 0, data: err });
-        }
         res.sendfile(_res.filename);
       });
     }else{

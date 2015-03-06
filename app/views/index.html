@@ -10,7 +10,7 @@
     {% for produto in produtos %}
       <div class="product-box">
         <div class="product-box__wrap">
-          <span class="product-box__favorite__star"><i>1</i> &#9733;</span>
+          <span class="product-box__favorite__star" onclick="star({{produto.id}}, {{produto.stars}})"><i id="star{{produto.id}}">{{produto.stars}}</i> &#9733;</span>
           <img src="{{produto.imagem}}" class="product-box__img">
           <section class="product-description">
             <div class="product-name line-clamp">

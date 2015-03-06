@@ -176,7 +176,7 @@ exports.getAll = function(req, res, next) {
 
 exports.createPDF = function(req, res, next) {
   db.Curriculo.find({
-    attributes: [ 'nome', 'email', 'nascimento', 'sexo', 'cidade', 'estado', 'telefone', 'celular', 'salarioAtual', 'trabalha', 'conheceuSite', 'cargo', 'hierarquico', 'area', 'pretensao', 'outrasEmpresas', 'outras' ],
+    attributes: [ 'id','nome', 'email', 'nascimento', 'sexo', 'cidade', 'estado', 'telefone', 'celular', 'salarioAtual', 'trabalha', 'conheceuSite', 'cargo', 'hierarquico', 'area', 'pretensao', 'outrasEmpresas', 'outras' ],
     where: {
       id: req.param('id')
     }
@@ -189,10 +189,10 @@ exports.createPDF = function(req, res, next) {
               "bottom": "1in",
               "left": "1in"
             },
-            entityformat: 'Letter',
-            filename: '/tmp/' + entity.nome + '.pdf'
+            filename: "public/pdf/" + entity.id + '.pdf'
           };
       pdf.create(getHTML(entity), options).toFile(function(err, _res) {
+        console.log(err);
         res.sendfile(_res.filename);
       });
     }else{

@@ -3,7 +3,7 @@
 var db = require('../models'),
     nodemailer = require('nodemailer'),
     fs = require('fs'),
-    pdf = require('html-pdf');
+    wkhtmltopdf = require('wkhtmltopdf');
 
 function valid(curriculo) {
   if(!curriculo.nome){
@@ -114,7 +114,7 @@ function valid(curriculo) {
   };
 
 function getHTML(obj) {
-  var _ = '';
+  var _ = '<div style="margin-top: 80px; font-size: 24px; margin-left: 20px;"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">';
   _ = _ + '<strong>Nome: </strong>' + obj.nome + '<br>';
   _ = _ + '<strong>Email: </strong>' + obj.email + '<br>';
   _ = _ + '<strong>Data de Nascimento: </strong>' + obj.nascimento + '<br>';
@@ -130,7 +130,7 @@ function getHTML(obj) {
   _ = _ + '<strong>Cargo desejado: </strong>' + obj.cargo + '<br>';
   _ = _ + '<strong>Área de profissional: </strong>' + getArea(obj.area) + '<br>';
   _ = _ + '<strong>Nível hierárquico: </strong>' + getHierarquico(obj.hierarquico) + '<br><br>';
-  _ = _ + '<strong>Outras empresas: </strong>' + obj.outrasEmpresas + '<br>';
+  _ = _ + '<strong>Outras empresas: </strong>' + obj.outrasEmpresas + '<br></div>';
   return _;
 };
 
@@ -182,18 +182,7 @@ exports.createPDF = function(req, res, next) {
     }
   }).success(function(entity) {
     if(entity){
-      var options = {
-            border: {
-              "top": "1in",
-              "right": "1in",
-              "bottom": "1in",
-              "left": "1in"
-            },
-            filename: "/public/pdf/" + entity.id + '.pdf'
-          };
-      pdf.create("getHTML(entity)", options).toFile(function(err, _res) {
-        res.sendfile(_res.filename);
-      });
+      wkhtmltopdf(getHTML(entity)).pipe(res);
     }else{
       res.json({ success: 0, message: "Currículo não encontrado" });
     }

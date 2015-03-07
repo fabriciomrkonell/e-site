@@ -32,7 +32,8 @@
     "sequelize": ">=2.0.0-rc8",
     "password-hash": ">=0.0.0",
     "html-pdf": ">= 1.1.0",
-    "swig": "^1.4.2"
+    "swig": "^1.4.2",
+    "wkhtmltopdf": ">= 0.1.5"
   },
   "devDependencies": {
     "browserify": "^8.1.0",

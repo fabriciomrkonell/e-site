@@ -189,11 +189,9 @@ exports.createPDF = function(req, res, next) {
               "bottom": "1in",
               "left": "1in"
             },
-            filename: "public/pdf/" + entity.id + '.pdf'
+            filename: "/public/pdf/" + entity.id + '.pdf'
           };
       pdf.create("getHTML(entity)", options).toFile(function(err, _res) {
-        console.log(err);
-        console.log(_res);
         res.sendfile(_res.filename);
       });
     }else{

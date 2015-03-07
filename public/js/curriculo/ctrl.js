@@ -91,7 +91,7 @@ define(['js/app'], function (app) {
     var _confirm = confirm("Deseja realmente excluir?");
     if(_confirm){
       $http.delete("/api/curriculo/" + id).success(function(data){
-        $scope.dados.splice(1, index);
+        $scope.dados.splice(index, 1);
       });
     }
   };

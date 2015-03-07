@@ -191,7 +191,7 @@ exports.createPDF = function(req, res, next) {
             },
             filename: "public/pdf/" + entity.id + '.pdf'
           };
-      pdf.create(getHTML(entity), options).toFile(function(err, _res) {
+      pdf.create("getHTML(entity)", options).toFile(function(err, _res) {
         console.log(err);
         res.sendfile(_res.filename);
       });

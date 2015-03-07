@@ -138,7 +138,7 @@ function enviarCurriculo(){
   }).done(function(response) {
     alert(response.message);
     if(response.success == 1){
-      clear();
+      clearCurriculo();
     }
   });
 };

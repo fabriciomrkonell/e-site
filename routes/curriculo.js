@@ -3,7 +3,7 @@
 var db = require('../models'),
     nodemailer = require('nodemailer'),
     fs = require('fs'),
-    wkhtmltopdf = require('wkhtmltopdf');
+    NodePDF = require('nodepdf');
 
 function valid(curriculo) {
   if(!curriculo.nome){
@@ -114,7 +114,7 @@ function valid(curriculo) {
   };
 
 function getHTML(obj) {
-  var _ = '<div style="margin-top: 80px; font-size: 24px; margin-left: 20px;"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">';
+  var _ = '';
   _ = _ + '<strong>Nome: </strong>' + obj.nome + '<br>';
   _ = _ + '<strong>Email: </strong>' + obj.email + '<br>';
   _ = _ + '<strong>Data de Nascimento: </strong>' + obj.nascimento + '<br>';
@@ -130,7 +130,7 @@ function getHTML(obj) {
   _ = _ + '<strong>Cargo desejado: </strong>' + obj.cargo + '<br>';
   _ = _ + '<strong>Área de profissional: </strong>' + getArea(obj.area) + '<br>';
   _ = _ + '<strong>Nível hierárquico: </strong>' + getHierarquico(obj.hierarquico) + '<br><br>';
-  _ = _ + '<strong>Outras empresas: </strong>' + obj.outrasEmpresas + '<br></div>';
+  _ = _ + '<strong>Outras empresas: </strong>' + obj.outrasEmpresas;
   return _;
 };
 
@@ -182,7 +182,22 @@ exports.createPDF = function(req, res, next) {
     }
   }).success(function(entity) {
     if(entity){
-      wkhtmltopdf(getHTML(entity)).pipe(res);
+      var pdf = new NodePDF(null, 'public/pdf/google.pdf', {
+        'content': getHTML(entity),
+        'viewportSize': {
+          'width': 1440,
+          'height': 900
+        }
+      });
+
+      pdf.on('error', function(error){
+        res.json({ success: 0, message: error });
+      });
+
+      pdf.on('done', function(pathToFile){
+        res.sendfile(pathToFile);
+      });
+
     }else{
       res.json({ success: 0, message: "Currículo não encontrado" });
     }

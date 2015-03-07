@@ -200,3 +200,20 @@ exports.createPDF = function(req, res, next) {
     }
   });
 };
+
+exports.excluir = function(req, res, next) {
+  db.Curriculo.find({
+    where: {
+      id: req.param('id')
+    },
+    attributes: ['id']
+  }).success(function(entity) {
+    if (entity) {
+      entity.destroy().success(function() {
+        res.json({ success: 1, message: "Curriculo excluído com sucesso!" });
+      });
+    } else {
+      res.json({ success: 0, message: "Curriculo não encontrado!" });
+    }
+  })
+};

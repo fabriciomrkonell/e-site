@@ -87,5 +87,14 @@ define(['js/app'], function (app) {
     window.open('/api/curriculo/pdf/' + id);
   };
 
+  $scope.excluir = function(id, index) {
+    var _confirm = confirm("Deseja realmente excluir?");
+    if(_confirm){
+      $http.delete("/api/curriculo/" + id).success(function(data){
+        $scope.dados.splice(1, index);
+      });
+    }
+  };
+
   }]);
 });

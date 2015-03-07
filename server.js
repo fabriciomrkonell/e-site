@@ -163,6 +163,7 @@ app.delete('/api/produto/:id', isAuthenticatedPage, produto.excluir);
 app.delete('/api/promocao/:id', isAuthenticatedPage, promocao.excluir);
 app.delete('/api/banner/:id', isAuthenticatedPage, banner.excluir);
 app.delete('/api/user/:id', isAuthenticatedPage, user.excluir);
+app.delete('/api/curriculo/:id', isAuthenticatedPage, curriculo.excluir);
 app.delete('/api/promocao/produto/:id', isAuthenticatedPage, promocao.excluirProduto);
 
 // Configurações

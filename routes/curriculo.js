@@ -193,6 +193,7 @@ exports.createPDF = function(req, res, next) {
           };
       pdf.create("getHTML(entity)", options).toFile(function(err, _res) {
         console.log(err);
+        console.log(_res);
         res.sendfile(_res.filename);
       });
     }else{

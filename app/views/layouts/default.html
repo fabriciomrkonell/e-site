@@ -31,32 +31,43 @@
           {% if page == '/' %}
             {% include '../banner.html' %}
             {% include '../index.html' %}
+            {% include '../js/banner.js' %}
+            {% include '../js/search.js' %}
+            {% include '../js/star.js' %}
           {% endif %}
 
           {% if page == '/top10' %}
             {% include '../top10.html' %}
+            {% include '../js/star.js' %}
           {% endif %}
 
           {% if page == '/history' %}
             {% include '../banner.html' %}
+            {% include '../js/banner.js' %}
             {% include '../history.html' %}
           {% endif %}
 
           {% if page == '/stores' %}
             {% include '../banner.html' %}
+            {% include '../js/banner.js' %}
             {% include '../stores.html' %}
           {% endif %}
 
           {% if page == '/sales' %}
             {% include '../sales.html' %}
+            {% include '../js/search.js' %}
+            {% include '../js/star.js' %}
+            {% include '../js/ofertas.js' %}
           {% endif %}
 
           {% if page == '/curriculo' %}
             {% include '../cv.html' %}
+            {% include '../js/curriculo.js' %}
           {% endif %}
 
           {% if page == '/contact' %}
             {% include '../contact.html' %}
+            {% include '../js/contact.js' %}
           {% endif %}
 
         </div>
@@ -65,11 +76,6 @@
 
     <div class="push-footer"></div>
   </div>
-
   {% include '../includes/footer.html' %}
-
-  <script src="lib/jquery/dist/jquery.min.js"></script>
-  <script src="build/js/main.js"></script>
-  <script src="build/js/app.min.js"></script>
 </body>
 </html>

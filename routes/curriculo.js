@@ -182,7 +182,7 @@ exports.createPDF = function(req, res, next) {
     }
   }).success(function(entity) {
     if(entity){
-      var pdf = new NodePDF(null, 'public/pdf/google.pdf', {
+      var pdf = new NodePDF(null, 'public/pdf/' + entity.id + '.pdf', {
         'content': getHTML(entity),
         'viewportSize': {
           'width': 1440,

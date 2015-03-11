@@ -6,19 +6,26 @@ module.exports = function(sequelize, DataTypes) {
     email: {
       type: DataTypes.STRING
     },
+    documento: {
+      type: DataTypes.STRING,
+      defaultValues: null
+    },
     nascimento: {
       type: DataTypes.STRING
     },
     sexo: {
-      // Masculino = 1
-      // Feminino = 0
+      type:   DataTypes.ENUM,
+      values: ['Masculino', 'Feminino']
+    },
+    bairro: {
       type: DataTypes.STRING
     },
     cidade: {
       type: DataTypes.STRING
     },
     estado: {
-      type: DataTypes.STRING
+      type:   DataTypes.ENUM,
+      values: ['Santa Catarina', 'Paraná', 'Rio Grande do Sul']
     },
     telefone: {
       type: DataTypes.STRING
@@ -27,66 +34,31 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING
     },
     salarioAtual: {
-      // R$ 950,00 - R$ 1.100,00 = 0950_1100
-      // R$ 1.100,00 - R$ 1.300,00 = 1100_1300
-      // R$ 1.300,00 - R$ 1.500,00 = 1300_1500
-      // R$ 1.500,00 - R$ 2.000,00 = 1500_2000
-      // R$ 2.000,00 - R$ 3.000,00 = 2000_3000
-      // R$ 3.000,00 - R$ 4.000,00 = 3000_4000
-      // R$ 4.000,00 - R$ 5.000,00 = 4000_5000
-      type: DataTypes.STRING
+      type:   DataTypes.ENUM,
+      values: ['R$ 950,00 - R$ 1.100,00', 'R$ 1.100,00 - R$ 1.300,00', 'R$ 1.300,00 - R$ 1.500,00', 'R$ 1.500,00 - R$ 2.000,00', 'R$ 2.000,00 - R$ 3.000,00', 'R$ 3.000,00 - R$ 4.000,00', 'R$ 4.000,00 - R$ 5.000,00']
     },
     trabalha: {
-      // Sim = 1
-      // Não = 0
-      type: DataTypes.STRING
+      type:   DataTypes.ENUM,
+      values: ['Sim', 'Não']
     },
     conheceuSite: {
-      // Google = 1
-      // Rádio = 2
-      // Jornal = 3
-      // Facebook = 4
-      // Outros = 10
-      type: DataTypes.STRING
+      type:   DataTypes.ENUM,
+      values: ['Google', 'Rádio', 'Jornal', 'Facebook', 'Outros']
     },
     cargo: {
       type: DataTypes.STRING
     },
     hierarquico: {
-      // Loja = 1
-      // Administrativo = 2
-      // Gerência = 3
-      // Liderança = 4
-      type: DataTypes.STRING
+      type:   DataTypes.ENUM,
+      values: ['Loja', 'Administrativo', 'Gerência', 'Liderança']
     },
     area: {
-      // Reposição = 1
-      // Empacotamento = 2
-      // Operação de caixa = 3
-      // Depósito = 4
-      // Açougue = 5
-      // Padaria = 6
-      // Administrativo = 7
-      // Liderança = 8
-      type: DataTypes.STRING
-    },
-    pretensao: {
-      // R$ 950,00 - R$ 1.100,00 = 0950_1100
-      // R$ 1.100,00 - R$ 1.300,00 = 1100_1300
-      // R$ 1.300,00 - R$ 1.500,00 = 1300_1500
-      // R$ 1.500,00 - R$ 2.000,00 = 1500_2000
-      // R$ 2.000,00 - R$ 3.000,00 = 2000_3000
-      // R$ 3.000,00 - R$ 4.000,00 = 3000_4000
-      // R$ 4.000,00 - R$ 5.000,00 = 4000_5000
-      type: DataTypes.STRING
+      type:   DataTypes.ENUM,
+      values: ['Reposição', 'Empacotamento', 'Operação de caixa', 'Depósito', 'Açougue', 'Padaria', 'Administrativo', 'Liderança']
     },
     outrasEmpresas: {
       type: DataTypes.TEXT
-    },
-    outras: {
-      type: DataTypes.STRING
     }
   })
-
-  return Curriculo
-}
+  return Curriculo;
+};

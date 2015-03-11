@@ -94,12 +94,16 @@ app.get('/top10', site.top10);
 app.get('/historia', site.history);
 app.get('/lojas', site.stores);
 app.get('/ofertas', site.sales);
-app.get('/curriculo', site.curriculo);
+app.get('/curriculo', function(req, res, next){
+  site.curriculo(req, res, next, null);
+});
 app.get('/contato', site.contact);
 
-app.post('/api/curriculo', curriculo.enviar)
 app.post('/api/contact', site.enviar)
 app.post('/api/star/produto/:id', produto.star)
+app.post('/curriculo', function(req, res, next){
+  curriculo.salvar(req, res, next, __dirname);
+});
 
 // API Get
 app.get('/api/promocao', isAuthenticatedPage, promocao.getAll)
@@ -120,6 +124,9 @@ app.get('/api/user', isAuthenticatedPage, user.info)
 app.get('/api/user/all', isAuthenticatedPage, user.getAll)
 app.get('/api/curriculo', isAuthenticatedPage, curriculo.getAll)
 app.get('/api/curriculo/pdf/:id', isAuthenticatedPage, curriculo.createPDF)
+app.get('/api/curriculo/documento/:id', isAuthenticatedPage, function(req, res, next){
+  curriculo.createDocumento(req, res, next, __dirname);
+});
 
 // API Post
 app.post('/api/promocao', isAuthenticatedPage, promocao.persist);

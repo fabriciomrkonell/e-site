@@ -229,7 +229,7 @@ exports.top10 = function(req, res, next) {
   });
 };
 
-exports.curriculo = function(req, res, next) {
+exports.curriculo = function(req, res, next, message, data) {
   db.Departamento.findAll({
     attributes: [ 'descricao', 'id' ],
     order: 'descricao ASC'
@@ -237,6 +237,8 @@ exports.curriculo = function(req, res, next) {
     res.render('layouts/default', {
       title: 'Home',
       page: '/curriculo',
+      message: message,
+      data: data || {},
       departamentos: entityDepartamentos
     });
   });

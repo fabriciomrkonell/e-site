@@ -2,7 +2,7 @@ var fs = require('fs'),
     path = require('path'),
     Sequelize = require('sequelize'),
     lodash = require('lodash'),
-    sequelize = new Sequelize('ranchobom', 'root', 'root', {
+    sequelize = new Sequelize('ranchobom', 'root', 'LuizaCanada', {
       dialect: "mysql"
     }),
     db = {};

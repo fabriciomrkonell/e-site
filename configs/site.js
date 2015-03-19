@@ -186,45 +186,53 @@ exports.sales = function(req, res, next) {
   });
 };
 
-exports.top10 = function(req, res, next) {
-  var data = getFormatData(new Date());
-      condicao = {
-        model: db.Produto,
-        attributes: [ 'id', 'descricao', 'imagem', 'valor', 'DepartamentoId', 'stars' ]
-      };
-
+exports.stars = function(req, res, next) {
   db.Departamento.findAll({
     attributes: [ 'descricao', 'id' ],
     order: 'descricao ASC'
   }).success(function(entityDepartamentos) {
-    db.Promocao.findAll({
-      order: 'dataInicio DESC',
-      limit: 10,
-      where: ["? >= dataInicio and ? <= dataTermino", data, data],
-      attributes: ['id']
-    }).success(function(entityPromocao) {
-      var promocoes = [];
-      for(var i = 0; i < entityPromocao.length; i++){
-        promocoes.push(entityPromocao[i].id);
-      };
-      db.Association.findAll({
-        limit: 10,
-        where: {
-          PromocaoId: promocoes
-        },
-        order: 'Produto.stars DESC',
-        include: [ condicao ]
-      }).success(function(entityAssociation) {
-        if(entityAssociation.length < 1){
-          pag = 1;
-        }
-        res.render('layouts/default', {
-          title: 'Home',
-          page: '/top10',
-          departamentos: entityDepartamentos,
-          produtos: entityAssociation
-        });
-      });
+    res.render('layouts/default', {
+      title: 'Home',
+      page: '/stars',
+      departamentos: entityDepartamentos,
+    });
+  });
+};
+
+exports.salesstars = function(req, res, next) {
+  var data = getFormatData(new Date()),
+      condicao = {
+        model: db.Produto,
+        attributes: [ 'id', 'descricao', 'imagem', 'valor', 'DepartamentoId' ]
+      },
+      _produtos = [],
+      _array = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'aa', 'bb', 'cc', 'dd', 'ee'];
+
+  for(var i = 0; i < _array.length; i++){
+    if(req.param(_array[i])){
+      _produtos.push(parseInt(req.param(_array[i])))
+    }
+  }
+
+  db.Promocao.findAll({
+    order: 'dataInicio DESC',
+    where: ["? >= dataInicio and ? <= dataTermino", data, data],
+    attributes: ['id']
+  }).success(function(entityPromocao) {
+    var promocoes = [];
+    for(var i = 0; i < entityPromocao.length; i++){
+      promocoes.push(entityPromocao[i].id);
+    };
+    db.Association.findAll({
+      where: {
+        PromocaoId: promocoes,
+        ProdutoId: _produtos
+      },
+      attributes: ['id'],
+      order: 'Produto.descricao ASC',
+      include: [ condicao ]
+    }).success(function(entityAssociation) {
+      res.json(entityAssociation);
     });
   });
 };

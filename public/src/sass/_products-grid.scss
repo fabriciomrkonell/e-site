@@ -26,9 +26,6 @@
   right: 5px;
   font-size: 20px;
   cursor: pointer;
-  &:hover {
-    color: $rgold;
-  }
 
   i {
     font-size: 14px;
@@ -36,6 +33,10 @@
     color: $b;
     font-style: normal;
   }
+}
+
+.product-box__favorite__star-active {
+  color: $rgold;
 }
 
 .product-box__favorite-active {

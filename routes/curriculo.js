@@ -78,7 +78,7 @@ exports.salvar = function(req, res, next, __dirname) {
   form.parse(req, function(err, fields, files) {
     if(valid(fields)){
       fields.nascimento = fields.day + '/' + fields.month + '/' + fields.year;
-      if(files.curriculo.size > 0){
+      if(files.curriculo.size > 0){z
         var _documento = files.curriculo.name.split(".");
         documento = _documento[_documento.length - 1];
         fields.documento = documento;

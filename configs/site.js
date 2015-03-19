@@ -265,6 +265,19 @@ exports.contact = function(req, res, next) {
   });
 };
 
+exports.cadastre = function(req, res, next) {
+  db.Departamento.findAll({
+    attributes: [ 'descricao', 'id' ],
+    order: 'descricao ASC'
+  }).success(function(entityDepartamentos) {
+    res.render('layouts/default', {
+      title: 'Home',
+      page: '/cadastre',
+      departamentos: entityDepartamentos
+    });
+  });
+};
+
 exports.enviar = function(req, res, next) {
   if(!req.body.name){
     return res.json({ success: 0, message: "Favor preencher todos os campos!" });

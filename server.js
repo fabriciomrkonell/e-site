@@ -98,6 +98,7 @@ app.get('/curriculo', function(req, res, next){
   site.curriculo(req, res, next, null);
 });
 app.get('/contato', site.contact);
+app.get('/cadastro', site.cadastre);
 app.get('/api/favoritos', site.salesstars);
 
 app.post('/api/contact', site.enviar)

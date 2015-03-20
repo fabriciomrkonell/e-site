@@ -11,7 +11,7 @@
       <div style='text-align: center; margin-top: 10px'>Nenhum produto encontrado!</div>
     {% endif %}
     {% for produto in produtos %}
-    <div class="product-box" ng-repeat="produto in config.data">
+    <div class="product-box">
       <div class="product-box__wrap">
         <span class="product-box__favorite__star" onclick="star({{produto.Produto.id}})" id="star{{produto.Produto.id}}">&#9733;</span>
         <img src="{{produto.Produto.imagem}}" alt="" class="product-box__img">

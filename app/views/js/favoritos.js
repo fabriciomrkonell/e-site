@@ -1,29 +1,31 @@
 <script>
 
-  var db = openDatabase("ranchobom", "1.0", "Favoritos - Rancho Bom", 200000);
-      _array = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'aa', 'bb', 'cc', 'dd', 'ee'],
+  var _array = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'aa', 'bb', 'cc', 'dd', 'ee'],
       produtos = "?init=true";
 
+
 	function getAll(){
-		db.transaction(function(transaction){
-      transaction.executeSql("SELECT produto FROM favoritos", [],
-        function(transaction, result){
-          produtos = "?init=true";
-          for(var i = 0; i < result.rows.length; i++){
-            produtos = produtos + "&" + _array[i] + '=' + result.rows.item(i)[['produto']];
-          }
-          getProdutos(produtos);
-        }, null
-      );
-    });
+		var cookie = getProdutosCookie(),
+        produtos = "?init=true";
+
+    for(var i = 0; i < cookie.length; i++){
+      produtos = produtos + "&" + _array[i] + '=' + cookie[i];
+    }
+
+    getProdutos(produtos);
 	};
 
   getAll();
 
   function unstar(produto){
-    db.transaction(function(transaction){
-      transaction.executeSql("DELETE FROM favoritos WHERE produto = ?", [produto], getAll(), getAll());
-    });
+    var cookie = getProdutosCookie();
+    document.cookie = "produto=";
+    for(var i = 0; i < cookie.length; i++){
+      if(parseInt(cookie[i]) != parseInt(produto)){
+        setProdutosCookie(cookie[i]);
+      }
+    }
+    getAll();
   };
 
   function getProdutos(url) {

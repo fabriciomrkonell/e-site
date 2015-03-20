@@ -21,6 +21,7 @@ var express         = require('express')
   , departamento    = require('./routes/departamento')
   , loja            = require('./routes/loja')
   , banner          = require('./routes/banner')
+  , client          = require('./routes/client')
   , curriculo       = require('./routes/curriculo')
   , index           = require('./configs/index')
   , site            = require('./configs/site')
@@ -98,13 +99,20 @@ app.get('/curriculo', function(req, res, next){
   site.curriculo(req, res, next, null);
 });
 app.get('/contato', site.contact);
-app.get('/cadastro', site.cadastre);
+app.get('/cadastro', function(req, res, next){
+  site.cadastre(req, res, next, null, {});
+});
 app.get('/api/favoritos', site.salesstars);
 
 app.post('/api/contact', site.enviar)
 app.post('/api/star/produto/:id', produto.star)
+
 app.post('/curriculo', function(req, res, next){
   curriculo.salvar(req, res, next, __dirname);
+});
+
+app.post('/cadastre', function(req, res, next){
+  client.salvar(req, res, next, __dirname);
 });
 
 // API Get

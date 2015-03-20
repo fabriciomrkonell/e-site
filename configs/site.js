@@ -265,7 +265,7 @@ exports.contact = function(req, res, next) {
   });
 };
 
-exports.cadastre = function(req, res, next) {
+exports.cadastre = function(req, res, next, message, data) {
   db.Departamento.findAll({
     attributes: [ 'descricao', 'id' ],
     order: 'descricao ASC'
@@ -273,6 +273,8 @@ exports.cadastre = function(req, res, next) {
     res.render('layouts/default', {
       title: 'Home',
       page: '/cadastre',
+      data: data || {},
+      message: message,
       departamentos: entityDepartamentos
     });
   });

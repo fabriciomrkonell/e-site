@@ -77,7 +77,7 @@ exports.setImagem = function(req, res, next, __dirname, propriedade){
   form.parse(req, function(err, fields, files) {
     fs.readFile(util.inspect(files.image.path).replace("'", "").replace("'", ""), function (err, data) {
       var nameArquivo = util.inspect(files.image.name).replace("'", "").replace("'", "");
-      var novo = "/img/lojas/" + req.param('id') + ".png";
+      var novo = "/img/lojas/" + propriedade + '-' +req.param('id') + ".png";
       var _p = {};
       _p[propriedade] = novo;
       fs.writeFile(__dirname + "/public" + novo, data, function (err) {

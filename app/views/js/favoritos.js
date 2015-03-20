@@ -36,7 +36,7 @@
     ajax.open("GET", "/api/favoritos" + url, true );
     ajax.onreadystatechange = function () {
       if(ajax.readyState == 1){
-        document.getElementById('message').innerHTML("Carregando!");
+        document.getElementById('message').innerHTML = "Carregando!";
       }
       if(ajax.readyState == 4){
         if(ajax.status == 200){
@@ -48,10 +48,10 @@
             };
           }else{
             document.getElementById("all-products").innerHTML = "";
-            document.getElementById('message').innerHTML("Nenhum produto encontrado!");
+            document.getElementById('message').innerHTML = "Nenhum produto encontrado!";
           }
         }else{
-          document.getElementById('message').innerHTML("Nenhum produto encontrado!");
+          document.getElementById('message').innerHTML = "Nenhum produto encontrado!";
         }
       }
     }

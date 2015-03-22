@@ -5,8 +5,8 @@ var db = require('../models'),
     nodemailer = require('nodemailer'),
     fs = require('fs'),
     NodePDF = require('nodepdf'),
-    util            = require('util'),
-    formidable      = require('formidable');
+    util = require('util'),
+    formidable = require('formidable');
 
 function valid(curriculo) {
   if(!curriculo.nome){

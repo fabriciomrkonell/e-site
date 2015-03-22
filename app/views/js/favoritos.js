@@ -3,7 +3,6 @@
   var _array = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'aa', 'bb', 'cc', 'dd', 'ee'],
       produtos = "?init=true";
 
-
 	function getAll(){
 		var cookie = getProdutosCookie(),
         produtos = "?init=true";
@@ -64,6 +63,21 @@
       }
     }
     ajax.send(null);
+  };
+
+  function createPDF() {
+    var cookie = getProdutosCookie(),
+        produtos = "?init=true";
+
+    if(cookie.length < 1){
+      document.getElementById('message').style.display = "";
+      document.getElementById('message').innerHTML = "Nenhum produto encontrado!";
+    }
+
+    for(var i = 0; i < cookie.length; i++){
+      produtos = produtos + "&" + _array[i] + '=' + cookie[i];
+    }
+    window.open("/api/favoritos/pdf" + produtos, true);
   };
 
 </script>

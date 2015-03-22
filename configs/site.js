@@ -32,7 +32,7 @@ exports.index = function(req, res, next) {
     attributes: [ 'id', 'descricao', 'imagem', 'valor', 'DepartamentoId', 'stars' ]
   }).success(function(entityProdutos) {
     db.Banner.findAll({
-      attributes: [ 'imagem' ]
+      attributes: [ 'imagem', 'url' ]
     }).success(function(entityBanners) {
       db.Departamento.findAll({
         attributes: [ 'descricao', 'id' ],
@@ -54,7 +54,7 @@ exports.index = function(req, res, next) {
 
 exports.history = function(req, res, next) {
   db.Banner.findAll({
-    attributes: [ 'imagem' ]
+    attributes: [ 'imagem', 'url' ]
   }).success(function(entityBanners) {
     db.Departamento.findAll({
       attributes: [ 'descricao', 'id' ],
@@ -75,7 +75,7 @@ exports.stores = function(req, res, next) {
     attributes: [ 'id', 'nome', 'telefone', 'email', 'atendimento', 'gerente', 'imagem1' ]
   }).success(function(entityLojas) {
     db.Banner.findAll({
-      attributes: [ 'imagem' ]
+      attributes: [ 'imagem', 'url' ]
     }).success(function(entityBanners) {
       db.Departamento.findAll({
         attributes: [ 'descricao', 'id' ],

@@ -141,6 +141,7 @@ app.get('/api/curriculo/documento/:id', isAuthenticatedPage, function(req, res, 
 // API Post
 app.post('/api/promocao', isAuthenticatedPage, promocao.persist);
 app.post('/api/banner', isAuthenticatedPage, banner.persist)
+app.post('/api/banner/url', isAuthenticatedPage, banner.saveURL)
 app.post('/api/loja', isAuthenticatedPage, loja.persist)
 app.post('/api/departamento', isAuthenticatedPage, departamento.persist)
 app.post('/api/user', isAuthenticatedPage, user.update)

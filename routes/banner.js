@@ -7,7 +7,7 @@ var db = require('../models'),
 
 exports.getAll = function(req, res, next) {
   db.Banner.findAll({
-      attributes: ['id', 'imagem']
+      attributes: ['id', 'imagem', 'url']
     }).success(function(entities) {
     res.json({ success: 1, data: entities });
   })
@@ -48,11 +48,27 @@ exports.setImagem = function(req, res, next, __dirname){
             entity.updateAttributes({ imagem: novo }).success(function(entitySalvo) {
               res.json({ success: 1, message: entitySalvo });
             })
-          } else {
+          }else{
             res.json({ success: 0, message: "Banner não encontado!" });
           }
         });
       });
     });
   });
+};
+
+exports.saveURL = function(req, res, next){
+  db.Banner.find({
+    where: {
+      id: req.body.id
+    }
+  }).success(function(entity) {
+    if (entity) {
+      entity.updateAttributes({ url: req.body.url }).success(function() {
+        res.json({ success: 1, message: "Banner atualizado com sucesso!" });
+      });
+    }else{
+      res.json({ success: 0, message: "Banner não encontrado!" });
+    }
+  })
 };

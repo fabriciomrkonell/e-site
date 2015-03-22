@@ -125,7 +125,7 @@ exports.getAllById = function(req, res, next) {
         order: 'Produto.descricao ASC',
         include: [ {
           model: db.Produto,
-          attributes: [ 'id', 'descricao', 'valor', 'codigo' ],
+          attributes: [ 'id', 'descricao', 'valor', 'codigo', 'imagem'],
           order: 'Produto.id ASC'
         } ]
       }).success(function(entityAssociation) {

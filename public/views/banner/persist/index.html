@@ -14,6 +14,11 @@
       <button style="margin-left: 10px" type="button" ng-click="submit(banner.id)" class="btn btn-success">Salvar
       </button>
     </form>
+    <br>
+    <form class="form-inne text-center">
+      <input type="text" placeholder="URL" ng-model="banner.url" class="form-control" ng-blur="saveURL(banner)" />
+    </form>
+    <br>
   </div>
   <div class="form-group text-center" style="margin-top: 50px">
     <button type="button" class="btn btn-danger" ng-click="excluir(banner.id, $index)">

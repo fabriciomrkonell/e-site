@@ -38,5 +38,9 @@ define(['js/app'], function (app) {
       });
     };
 
+    $scope.saveURL = function(dados){
+      $http.post("/api/banner/url", dados);
+    };
+
   }]);
 });

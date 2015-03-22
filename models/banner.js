@@ -5,6 +5,10 @@ module.exports = function(sequelize, DataTypes) {
     imagem: {
       type: DataTypes.STRING,
       defaultValue: '/img/sem-imagem/banner.png'
+    },
+    url: {
+    	type: DataTypes.STRING,
+      defaultValue: '/'
     }
   })
   return Banner;

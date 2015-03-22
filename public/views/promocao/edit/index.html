@@ -69,7 +69,7 @@
 							<th style="width: 100px" class="text-center">Código</th>
 							<th>Descrição</th>
 							<th style="width: 100px" class="text-center">Valor</th>
-							<th style="width: 90px" class="text-center">Ações</th>
+							<th style="width: 100px" class="text-center">Ações</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -77,8 +77,9 @@
 							<td style="width: 100px" class="text-center">{{produto.Produto.codigo}}</td>
 							<td>{{produto.Produto.descricao}}</td>
 							<td style="width: 100px" class="text-center">{{produto.Produto.valor}}</td>
-							<td style="width: 90px" class="text-center">
+							<td style="width: 100px" class="text-center">
 								<a ng-href="#/cadastro-produto/{{produto.Produto.id}}" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-pencil"></i></a>
+								<a ng-disabled="'{{produto.Produto.imagem}}' != '/img/sem-imagem/produto.png'" ng-href="#/cadastro-produto/{{produto.Produto.id}}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-picture"></i></a>
 								<button ng-click="excluir(produto.id, $index)" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i></button>
 							</td>
 						</tr>

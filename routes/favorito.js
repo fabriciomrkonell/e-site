@@ -79,6 +79,10 @@ exports.createPDF = function(req, res, next) {
 
       var pdf = new NodePDF(null, 'public/pdf/pdf-favoritos-' + Math.floor((Math.random() * 100) + 1) + '.pdf', {
         'content': getHTML(entityAssociation),
+        "header": {
+          "height": "45mm",
+          "contents": '<div style="text-align: center;">Author: Marc Bachmann</div>'
+        },
         'viewportSize': {
           'width': 1440,
           'height': 900

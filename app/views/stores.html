@@ -21,7 +21,7 @@
             <span>
               <img class="store-info__icon" src="build/img/email.png">
             </span>
-            <a ng-href="mailto:{{loja.email}}">{{loja.email}}</a>
+            <a href="mailto:{{loja.email}}">{{loja.email}}</a>
           </li>
           <li class="store-info__item">
             <span>
@@ -34,6 +34,12 @@
               <img class="store-info__icon" src="build/img/clock.png">
             </span>
             {{loja.atendimento}}
+          </li>
+          <li class="store-info__item">
+            <span>
+              <img class="store-info__icon" src="build/img/clock.png">
+            </span>
+            <a href="https://www.google.com.br/maps/dir//{{loja.latitude}},{{loja.longitude}}/@{{loja.latitude}},{{loja.longitude}},16z" target="_blank">Como chegar</a>
           </li>
         </ul>
       </div>

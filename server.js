@@ -21,7 +21,7 @@ var express         = require('express')
   , departamento    = require('./routes/departamento')
   , loja            = require('./routes/loja')
   , banner          = require('./routes/banner')
-  , client          = require('./routes/client')
+  , cliente          = require('./routes/client')
   , curriculo       = require('./routes/curriculo')
   , index           = require('./configs/index')
   , site            = require('./configs/site')
@@ -112,7 +112,7 @@ app.post('/curriculo', function(req, res, next){
 });
 
 app.post('/cadastre', function(req, res, next){
-  client.salvar(req, res, next, __dirname);
+  cliente.salvar(req, res, next, __dirname);
 });
 
 // API Get
@@ -133,6 +133,7 @@ app.get('/api/produtos/favoritos', isAuthenticatedPage, produto.favoritos)
 app.get('/api/user', isAuthenticatedPage, user.info)
 app.get('/api/user/all', isAuthenticatedPage, user.getAll)
 app.get('/api/curriculo', isAuthenticatedPage, curriculo.getAll)
+app.get('/api/cliente', isAuthenticatedPage, cliente.getAll)
 app.get('/api/curriculo/pdf/:id', isAuthenticatedPage, curriculo.createPDF)
 app.get('/api/curriculo/documento/:id', isAuthenticatedPage, function(req, res, next){
   curriculo.createDocumento(req, res, next, __dirname);
@@ -182,6 +183,7 @@ app.delete('/api/promocao/:id', isAuthenticatedPage, promocao.excluir);
 app.delete('/api/banner/:id', isAuthenticatedPage, banner.excluir);
 app.delete('/api/user/:id', isAuthenticatedPage, user.excluir);
 app.delete('/api/curriculo/:id', isAuthenticatedPage, curriculo.excluir);
+app.delete('/api/cliente/:id', isAuthenticatedPage, cliente.excluir);
 app.delete('/api/promocao/produto/:id', isAuthenticatedPage, promocao.excluirProduto);
 
 // Configurações

@@ -72,7 +72,7 @@ exports.history = function(req, res, next) {
 
 exports.stores = function(req, res, next) {
   db.Loja.findAll({
-    attributes: [ 'id', 'nome', 'telefone', 'email', 'atendimento', 'gerente', 'imagem1' ]
+    attributes: [ 'id', 'nome', 'telefone', 'email', 'atendimento', 'gerente', 'imagem1', 'imagem2', 'imagem3', 'imagem4', 'latitude', 'longitude' ]
   }).success(function(entityLojas) {
     db.Banner.findAll({
       attributes: [ 'imagem', 'url' ]

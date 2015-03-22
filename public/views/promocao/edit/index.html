@@ -2,90 +2,87 @@
 	<i class="glyphicon glyphicon-list-alt"></i>
 	&nbsp;&nbsp;Lista de Produtos
 </h3>
-<form name="form" role="form" class="ng-cloak">
-	<div class="row">
-		<div class="col-sm-5">
-	 		<div class="form-group">
-	    	<label>Descrição da promoção</label>
-	    	<input type="text" class="form-control" ng-model="dados.descricao" ng-readonly="true">
-	  	</div>
-		</div>
-		<div class="col-sm-3">
-	 		<div class="form-group">
-	    	<label>Data de início</label>
-	    	<input type="text" class="form-control" ng-value="getFormatData(dados.dataInicio)" ng-readonly="true">
-	  	</div>
-		</div>
-		<div class="col-sm-3">
-	 		<div class="form-group">
-	    	<label>Data de término</label>
-	    	<input type="text" class="form-control" ng-value="getFormatData(dados.dataTermino)" ng-readonly="true">
-	  	</div>
-		</div>
+<div class="row">
+	<div class="col-sm-5">
+ 		<div class="form-group">
+    	<label>Descrição da promoção</label>
+    	<input type="text" class="form-control" ng-model="dados.descricao" ng-readonly="true">
+  	</div>
 	</div>
-	<div class="row">
-		<div class="col-sm-12">
-	 		<hr/>
-		</div>
+	<div class="col-sm-3">
+ 		<div class="form-group">
+    	<label>Data de início</label>
+    	<input type="text" class="form-control" ng-value="getFormatData(dados.dataInicio)" ng-readonly="true">
+  	</div>
 	</div>
-	<div class="row">
-		<div class="col-sm-5">
-	 		<div class="form-group">
-	    	<label>Código</label>
-	    	<angucomplete
-          placeholder="Ex: 78965487654"
-          pause="300"
-          selectedobject="expressao"
-          searchfields="codigo"
-          titlefield="codigo"
-          minlength="1"
-          url="/api/produtos/autocomplete/"
-          inputclass="form-control"
-          matchclass="highlight" />
-	  	</div>
-	  	<div class="form-group" ng-show="existeExpressao()">
-	    	<label>Código</label>
-	    	<input type="text" class="form-control" ng-model="expressao.originalObject.codigo" ng-readonly="true">
-	  	</div>
-	  	<div class="form-group" ng-show="existeExpressao()">
-	    	<label>Descrição</label>
-	    	<input type="text" class="form-control" placeholder="Ex: Coca Cola 2 Litros" ng-model="expressao.originalObject.descricao" ng-readonly="true">
-	  	</div>
-	  	<div class="form-group" ng-show="existeExpressao()">
-	    	<label>Valor</label>
-	    	<input type="text" class="form-control" placeholder="Ex: 12,99" ng-model="expressao.originalObject.valor" ng-readonly="true">
-	  	</div>
-	 		<div class="form-group" ng-show="existeExpressao()">
-	    	<button type="button" class="btn btn-success" ng-click="adicionar(expressao)">Adicionar</button>
-	    	<button style="margin-left: 10px" type="button" class="btn btn-primary" ng-click="clear()">Limpar</button>
-	  	</div>
-		</div>
-		<div class="col-sm-7">
-	 		<div class="form-group">
-	    	<label>Produtos da promoção</label>
-	    	<table class="table table-condensed table-bordered">
-					<thead>
-						<tr>
-							<th style="width: 100px" class="text-center">Código</th>
-							<th>Descrição</th>
-							<th style="width: 100px" class="text-center">Valor</th>
-							<th style="width: 100px" class="text-center">Ações</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="produto in produtos">
-							<td style="width: 100px" class="text-center">{{produto.Produto.codigo}}</td>
-							<td>{{produto.Produto.descricao}}</td>
-							<td style="width: 100px" class="text-center">{{produto.Produto.valor}}</td>
-							<td style="width: 100px" class="text-center">
-								<a ng-href="#/cadastro-produto/{{produto.Produto.id}}" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-pencil"></i></a>
-								<a ng-disabled="'{{produto.Produto.imagem}}' != '/img/sem-imagem/produto.png'" ng-href="#/cadastro-produto/{{produto.Produto.id}}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-picture"></i></a>
-								<button ng-click="excluir(produto.id, $index)" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i></button>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-	  	</div>
-		</div>
+	<div class="col-sm-3">
+ 		<div class="form-group">
+    	<label>Data de término</label>
+    	<input type="text" class="form-control" ng-value="getFormatData(dados.dataTermino)" ng-readonly="true">
+  	</div>
 	</div>
-</form>
+</div>
+<div class="row">
+	<div class="col-sm-12">
+ 		<hr/>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-5">
+ 		<div class="form-group">
+    	<label>Código</label>
+    	<angucomplete
+        placeholder="Ex: 78965487654"
+        pause="300"
+        selectedobject="expressao"
+        titlefield="codigo,descricao"
+        minlength="1"
+        url="/api/produtos/autocomplete/"
+        inputclass="form-control"
+        matchclass="highlight" />
+  	</div>
+  	<div class="form-group" ng-show="existeExpressao()">
+    	<label>Código</label>
+    	<input type="text" class="form-control" ng-model="expressao.originalObject.codigo" ng-readonly="true">
+  	</div>
+  	<div class="form-group" ng-show="existeExpressao()">
+    	<label>Descrição</label>
+    	<input type="text" class="form-control" placeholder="Ex: Coca Cola 2 Litros" ng-model="expressao.originalObject.descricao" ng-readonly="true">
+  	</div>
+  	<div class="form-group" ng-show="existeExpressao()">
+    	<label>Valor</label>
+    	<input type="text" class="form-control" placeholder="Ex: 12,99" ng-model="expressao.originalObject.valor" ng-readonly="true">
+  	</div>
+ 		<div class="form-group" ng-show="existeExpressao()">
+    	<button type="button" class="btn btn-success" ng-click="adicionar(expressao)">Adicionar</button>
+    	<button style="margin-left: 10px" type="button" class="btn btn-primary" ng-click="clear()">Limpar</button>
+  	</div>
+	</div>
+	<div class="col-sm-7">
+ 		<div class="form-group">
+    	<label>Produtos da promoção</label>
+    	<table class="table table-condensed table-bordered">
+				<thead>
+					<tr>
+						<th style="width: 100px" class="text-center">Código</th>
+						<th>Descrição</th>
+						<th style="width: 100px" class="text-center">Valor</th>
+						<th style="width: 100px" class="text-center">Ações</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="produto in produtos">
+						<td style="width: 100px" class="text-center">{{produto.Produto.codigo}}</td>
+						<td>{{produto.Produto.descricao}}</td>
+						<td style="width: 100px" class="text-center">{{produto.Produto.valor}}</td>
+						<td style="width: 100px" class="text-center">
+							<a ng-href="#/cadastro-produto/{{produto.Produto.id}}" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-pencil"></i></a>
+							<a ng-disabled="'{{produto.Produto.imagem}}' != '/img/sem-imagem/produto.png'" ng-href="#/cadastro-produto/{{produto.Produto.id}}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-picture"></i></a>
+							<button ng-click="excluir(produto.id, $index)" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i></button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+  	</div>
+	</div>
+</div>

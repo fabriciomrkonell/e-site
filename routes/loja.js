@@ -54,7 +54,7 @@ exports.getById = function(req, res, next) {
     where: {
       id: req.param('id')
     },
-    attributes: ['id', 'nome', 'telefone', 'email', 'atendimento', 'gerente']
+    attributes: ['id', 'nome', 'telefone', 'email', 'atendimento', 'gerente', 'latitude', 'longitude']
   }).success(function(entity) {
     if (entity) {
       res.json({ success: 1, data: entity });

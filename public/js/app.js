@@ -114,6 +114,11 @@ define(['angularAMD', 'angular-route', 'angular-sanitize', 'autocomplete'], func
       controller: 'Curriculo',
       controllerUrl: 'js/curriculo/ctrl',
       permission: [1,3]
+    })).when("/consulta-clientes", angularAMD.route({
+      templateUrl: '/views/cliente!' + Math.random(),
+      controller: 'Cliente',
+      controllerUrl: 'js/cliente/ctrl',
+      permission: [1]
     })).otherwise({ redirectTo: "/home" });
 
     var interceptor = function($window){

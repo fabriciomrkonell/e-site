@@ -1,0 +1,28 @@
+<h3>
+	<i class="glyphicon glyphicon-list"></i>
+	&nbsp;&nbsp;Clientes
+</h3>
+<div class="row">
+	<div class="col-sm-12">
+		<table class="table table-bordered table-condensed">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th class="text-center" style="width: 250px">Email</th>
+					<th class="text-center" style="width: 150px">Telefone</th>
+					<th class="text-center" style="width: 80px">Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="cliente in dados">
+					<td>{{cliente.nome}}</td>
+					<td class="text-center" style="width: 250px">{{cliente.email}}</td>
+					<td class="text-center" style="width: 150px">{{cliente.telefone}}</td>
+					<td class="text-center" style="width: 80px">
+						<button ng-click="excluir(cliente.id, $index)" type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i></button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

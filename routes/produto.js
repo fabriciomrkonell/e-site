@@ -103,7 +103,7 @@ exports.excluir = function(req, res, next) {
 
 exports.autocomplete = function(req, res, next) {
   db.Produto.findAll({
-    where: "codigo LIKE '%" + req.param('exp') + "%'",
+    where: "Produto.codigo LIKE '%" + req.param('exp') + "%' OR Produto.descricao LIKE '%" + req.param('exp') + "%'",
     attributes: ['id', 'codigo', 'descricao', 'valor', 'imagem'],
     limit: 10,
     include: [ { model: db.Departamento, attributes: [ 'descricao' ] } ]
@@ -114,7 +114,7 @@ exports.autocomplete = function(req, res, next) {
 
 exports.autocompleteNaoFavorito = function(req, res, next) {
   db.Produto.findAll({
-    where: "codigo LIKE '%" + req.param('exp') + "%' and favorito = 0",
+    where: "(codigo LIKE '%" + req.param('exp') + "%' OR Produto.descricao LIKE '%" + req.param('exp') + "%') and favorito = 0 ",
     attributes: ['id', 'codigo', 'descricao', 'valor', 'imagem'],
     limit: 10,
     include: [ { model: db.Departamento, attributes: [ 'descricao' ] } ]

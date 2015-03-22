@@ -28,6 +28,14 @@
     	<label>Nome do gerente</label>
     	<input type="text" class="form-control" ng-model="dados.gerente" placeholder="Ex: João da Silva">
   	</div>
+    <div class="form-group">
+      <label>Latitude</label>
+      <input type="text" class="form-control" ng-model="dados.latitude" placeholder="Ex: 26.4892221">
+    </div>
+    <div class="form-group">
+      <label>Longitude</label>
+      <input type="text" class="form-control" ng-model="dados.longitude" placeholder="Ex: -49.078042">
+    </div>
  		<div class="form-group">
     	<button type="button" class="btn btn-success" ng-click="salvar(dados)">Salvar</button>
       <a ng-show="dados.id != ''" style="margin-left: 10px" type="button" ng-href="#/cadastro-loja" class="btn btn-primary">Nova loja</a>

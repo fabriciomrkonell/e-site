@@ -173,7 +173,7 @@ exports.excluir = function(req, res, next) {
       entity.destroy().success(function() {
         res.json({ success: 1, message: "Curriculo excluído com sucesso!" });
       });
-    } else {
+    }else{
       res.json({ success: 0, message: "Curriculo não encontrado!" });
     }
   })

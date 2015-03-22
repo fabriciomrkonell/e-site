@@ -21,8 +21,9 @@ var express         = require('express')
   , departamento    = require('./routes/departamento')
   , loja            = require('./routes/loja')
   , banner          = require('./routes/banner')
-  , cliente          = require('./routes/client')
+  , cliente         = require('./routes/client')
   , curriculo       = require('./routes/curriculo')
+  , favorito        = require('./routes/favorito')
   , index           = require('./configs/index')
   , site            = require('./configs/site')
   , configs         = require('./configs/config')
@@ -95,22 +96,23 @@ app.get('/favoritos', site.stars);
 app.get('/historia', site.history);
 app.get('/lojas', site.stores);
 app.get('/ofertas', site.sales);
-app.get('/curriculo', function(req, res, next){
-  site.curriculo(req, res, next, null);
-});
 app.get('/contato', site.contact);
+app.get('/api/favoritos', site.salesstars);
+app.get('/api/favoritos/pdf', function(req, res, next){
+  favorito.createPDF(req, res, next, __dirname);
+});
 app.get('/cadastro', function(req, res, next){
   site.cadastre(req, res, next, null, {});
 });
-app.get('/api/favoritos', site.salesstars);
+app.get('/curriculo', function(req, res, next){
+  site.curriculo(req, res, next, null);
+});
 
 app.post('/api/contact', site.enviar)
 app.post('/api/star/produto/:id', produto.star)
-
 app.post('/curriculo', function(req, res, next){
   curriculo.salvar(req, res, next, __dirname);
 });
-
 app.post('/cadastre', function(req, res, next){
   cliente.salvar(req, res, next, __dirname);
 });

@@ -5,8 +5,6 @@ var db = require('../models'),
 
 function getHTML(obj) {
   var _ = '';
-  _ = _ + '<div><strong>Favoritos</div><br>';
-
   for(var i = 0; i < obj.length; i++){
     _ = _ + '<strong>Código: </strong>' + obj[i].Produto.codigo + '<br>';
     _ = _ + '<strong>Descricao: </strong>' + obj[i].Produto.descricao + '<br>';
@@ -79,10 +77,6 @@ exports.createPDF = function(req, res, next) {
 
       var pdf = new NodePDF(null, 'public/pdf/pdf-favoritos-' + Math.floor((Math.random() * 100) + 1) + '.pdf', {
         'content': getHTML(entityAssociation),
-        "header": {
-          "height": "45mm",
-          "contents": '<div style="text-align: center;">Author: Marc Bachmann</div>'
-        },
         'viewportSize': {
           'width': 1440,
           'height': 900

@@ -1,4 +1,8 @@
 {% block content %}
+
+<script src="lib/jquery/dist/jquery.min.js"></script>
+<script src="build/js/main.js"></script>
+
 <div class="home-content">
   <header class="home-content__header">
     <h1 class="big-title big-title__stores">Lojas</h1>
@@ -28,10 +32,12 @@
     <div class="store-box">
       <h2 class="store-box__title">{{loja.nome}}</h2>
       <div class="store-box__a store-box__col">
-        <img class="store-box__img" src="{{loja.imagem1}}">
-        <img class="store-box__img" src="{{loja.imagem2}}">
-        <img class="store-box__img" src="{{loja.imagem3}}">
-        <img class="store-box__img" src="{{loja.imagem4}}">
+        <div id="lojas-site__content{{loja.id}}">
+          <img class="store-box__img" src="{{loja.imagem1}}">
+          <img class="store-box__img" src="{{loja.imagem2}}">
+          <img class="store-box__img" src="{{loja.imagem3}}">
+          <img class="store-box__img" src="{{loja.imagem4}}">
+        </div>
       </div>
       <div class="store-box__b store-box__col store-info">
         <ul class="store-info__list">
@@ -65,6 +71,14 @@
         </ul>
       </div>
     </div>
+
+    <script>
+      $('#lojas-site__content{{loja.id}}').cycle({
+        fx: 'fade',
+        speed: 'fast',
+        pager: '#banner-site__nav'
+      });
+    </script>
     {% endfor %}
 
   </section>

@@ -5,8 +5,6 @@ var db = require('../models'),
 
 function getHTML(obj) {
   var _ = '';
-  _ = _ + '<div><strong>Favoritos</div><br>';
-
   for(var i = 0; i < obj.length; i++){
     _ = _ + '<strong>Código: </strong>' + obj[i].Produto.codigo + '<br>';
     _ = _ + '<strong>Descricao: </strong>' + obj[i].Produto.descricao + '<br>';

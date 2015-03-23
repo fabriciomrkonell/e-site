@@ -1,8 +1,5 @@
 {% block content %}
 
-<script src="lib/jquery/dist/jquery.min.js"></script>
-<script src="build/js/main.js"></script>
-
 <div class="home-content">
   <header class="home-content__header">
     <h1 class="big-title big-title__stores">Lojas</h1>
@@ -75,8 +72,7 @@
     <script>
       $('#lojas-site__content{{loja.id}}').cycle({
         fx: 'fade',
-        speed: 'fast',
-        pager: '#banner-site__nav'
+        speed: 'fast'
       });
     </script>
     {% endfor %}

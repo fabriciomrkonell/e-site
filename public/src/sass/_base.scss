@@ -158,6 +158,10 @@ ul {
   @include span-columns(9 of 9);
 }
 
+.big-title__favs {
+  @include span-columns(8 of 9);
+}
+
 .home-content__search {
   margin: .67em 0;
 }
@@ -181,4 +185,17 @@ ul {
   img {
     vertical-align: middle;
   }
+}
+
+.btn-print__favs {
+  margin-top: 10px;
+  background: transparent;
+}
+
+.favs-content__print {
+  @include span-columns(1 of 9);
+}
+
+.print-favs__img {
+  vertical-align: middle;
 }

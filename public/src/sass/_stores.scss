@@ -15,6 +15,11 @@
 
 .store-box__col {
   @include span-columns(4.5 of 9);
+  @include clearfix;
+}
+
+.store-box__a {
+  margin-top: 45px;
 }
 
 .store-box__title {

@@ -83,8 +83,113 @@ define(['js/app'], function (app) {
     }
   };
 
-  $scope.gerarPDF = function(id) {
-    window.open('/api/curriculo/pdf/' + id);
+  $scope.gerarPDF = function(obj) {
+    var doc = new jsPDF();
+    doc.setFontSize(30);
+    doc.text(15, 20, "Currículo");
+    doc.setFontSize(16);
+
+    // Nome
+    doc.setFontType("bold");
+    doc.text(15, 40, "Nome: ");
+    doc.setFontType("normal");
+    doc.text(35, 40, obj.nome  || "");
+
+    //Email
+    doc.setFontType("bold");
+    doc.text(15, 48, "Email: ");
+    doc.setFontType("normal");
+    doc.text(34, 48, obj.email || "");
+
+    //Nascimento
+    doc.setFontType("bold");
+    doc.text(15, 56, "Nascimento: ");
+    doc.setFontType("normal");
+    doc.text(51, 56, obj.nascimento  || "");
+
+    //Sexo
+    doc.setFontType("bold");
+    doc.text(120, 56, "Sexo: ");
+    doc.setFontType("normal");
+    doc.text(137, 56, $scope.getSexo(obj.sexo));
+
+    //Cidade
+    doc.setFontType("bold");
+    doc.text(15, 64, "Cidade: ");
+    doc.setFontType("normal");
+    doc.text(38, 64, obj.cidade || "");
+
+    //Estado
+    doc.setFontType("bold");
+    doc.text(120, 64, "Estado: ");
+    doc.setFontType("normal");
+    doc.text(143, 64, obj.estado || "");
+
+    //Telefone
+    doc.setFontType("bold");
+    doc.text(15, 75, "Telefone: ");
+    doc.setFontType("normal");
+    doc.text(42, 75, obj.telefone || "");
+
+    //Celular
+    doc.setFontType("bold");
+    doc.text(120, 75, "Celular: ");
+    doc.setFontType("normal");
+    doc.text(142, 75, obj.celular || "");
+
+    //Faixa salárial
+    doc.setFontType("bold");
+    doc.text(15, 86, "Faixa salárial: ");
+    doc.setFontType("normal");
+    doc.text(54, 86, $scope.getSalario(obj.salarioAtual));
+
+    //Pretenção salárial
+    doc.setFontType("bold");
+    doc.text(15, 94, "Pretenção salarial: ");
+    doc.setFontType("normal");
+    doc.text(67, 94, $scope.getSalario(obj.pretensao));
+
+   //Cargo desejado
+    doc.setFontType("bold");
+    doc.text(15, 105, "Cargo desejado: ");
+    doc.setFontType("normal");
+    doc.text(61, 105, obj.cargo || "");
+
+    //Nível hierárquico
+    doc.setFontType("bold");
+    doc.text(15, 113, "Nível hierárquico: ");
+    doc.setFontType("normal");
+    doc.text(65, 113, $scope.getHierarquico(obj.hierarquico));
+
+    //Área profissional
+    doc.setFontType("bold");
+    doc.text(15, 121, "Área profissional: ");
+    doc.setFontType("normal");
+    doc.text(65, 121, $scope.getArea(obj.area));
+
+    //Trabalha atualmente
+    doc.setFontType("bold");
+    doc.text(120, 121, "Trabalha atualmente: ");
+    doc.setFontType("normal");
+    doc.text(178, 121, $scope.getTrabalha(obj.trabalha));
+
+    if(obj.outrasEmpresas != null){
+      doc.setFontType("bold");
+      doc.text(15, 132, "Empresas: ");
+      doc.setFontType("normal");
+      doc.text(15, 139, doc.splitTextToSize(obj.outrasEmpresas, 190))
+    }
+
+    doc.save("curriculo_" + obj.nome + ".pdf");
+  };
+
+  $scope.excluir = function(id, index) {
+    var _confirm = confirm("Deseja realmente excluir?");
+    if(_confirm){
+      $http.delete("/api/curriculo/" + id).success(function(data){
+        $scope.dados.splice(index, 1);
+      });
+    }
   };
 
   }]);
